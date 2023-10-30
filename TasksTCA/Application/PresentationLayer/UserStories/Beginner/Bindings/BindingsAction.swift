@@ -20,7 +20,7 @@ public enum BindingsAction: Equatable {
     case setToggleValue(Bool)
     
     /// Setter for 'pickedColor' property binding
-    case setPickerValue(BindingsState.PicableColor)
+    case setPickerColorValue(BindingsState.PicableColor)
     
     // MARK: - Children
     

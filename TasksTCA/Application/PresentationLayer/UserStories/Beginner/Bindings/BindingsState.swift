@@ -49,7 +49,7 @@ public struct BindingsState: Equatable {
     public let colors = PicableColor.allCases
     
     /// Picked tint color
-    public var pickedColor = PicableColor.orange
+    public var pickerColor = PicableColor.orange
     
     /// Current slider value
     public var sliderValue = 0.0

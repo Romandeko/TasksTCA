@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import TCA
+import ComposableArchitecture
 
 @main
 struct TasksTCAApp: App {
@@ -15,10 +15,10 @@ struct TasksTCAApp: App {
     
     var body: some Scene {
         WindowGroup {
-            FibonacciCounterView(
+            NavigationModuleView(
                 store: Store(
-                    initialState: FibonacciCounterState(),
-                    reducer: FibonacciCounterReducer()
+                    initialState: NavigationModuleState(),
+                    reducer: NavigationModuleReducer()
                 )
             )
         }

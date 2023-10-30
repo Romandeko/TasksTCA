@@ -6,15 +6,15 @@
 //
 
 import Foundation
-import TCA
+import ComposableArchitecture
 
 // MARK: - BindingsReducer
 
-public struct BindingsReducer: ReducerProtocol {
+public struct BindingsReducer: Reducer {
     
-    // MARK: - ReducerProtocol
+    // MARK: - Reducer
     
-    public var body: some ReducerProtocol<BindingsState, BindingsAction> {
+    public var body: some Reducer<BindingsState, BindingsAction> {
         Reduce { state, action in
             switch action  {
             case .setToggleValue(let value):
@@ -22,8 +22,8 @@ public struct BindingsReducer: ReducerProtocol {
                 state.isCounterExists = value
             case .setSliderValue(let value):
                 state.sliderValue = value
-            case .setPickerValue(let value):
-                state.pickedColor = value
+            case .setPickerColorValue(let value):
+                state.pickerColor = value
             default:
                 break
             }

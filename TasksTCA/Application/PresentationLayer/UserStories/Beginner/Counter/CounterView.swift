@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import TCA
+import ComposableArchitecture
 
 // MARK: - FibonacciCounterView
 

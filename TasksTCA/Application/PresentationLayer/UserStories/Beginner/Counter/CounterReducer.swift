@@ -6,15 +6,15 @@
 //
 
 import Foundation
-import TCA
+import ComposableArchitecture
 
 // MARK: - CounterReducer
 
-public struct CounterReducer: ReducerProtocol {
+public struct CounterReducer: Reducer {
     
-    // MARK: - ReducerProtocol
+    // MARK: - Reducer
     
-    public func reduce(into state: inout CounterState, action: CounterAction) -> EffectTask<CounterAction> {
+    public func reduce(into state: inout CounterState, action: CounterAction) -> Effect<CounterAction> {
         switch action {
         case .decrementButtonTapped:
             state.resultNumber -= 1

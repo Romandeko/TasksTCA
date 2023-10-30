@@ -5,15 +5,15 @@
 //  Created by Роман Денисенко on 26.10.23.
 //
 
-import TCA
+import ComposableArchitecture
 
 // MARK: - DoubleCounterReducer
 
-public struct DoubleCounterReducer: ReducerProtocol {
+public struct DoubleCounterReducer: Reducer {
     
-    // MARK: - ReducerProtocol
+    // MARK: - Reducer
     
-    public var body: some ReducerProtocol<DoubleCounterState, DoubleCounterAction> {
+    public var body: some Reducer<DoubleCounterState, DoubleCounterAction> {
         Scope(state: \.firstCounter, action: /DoubleCounterAction.firstCounter) {
             CounterReducer()
         }

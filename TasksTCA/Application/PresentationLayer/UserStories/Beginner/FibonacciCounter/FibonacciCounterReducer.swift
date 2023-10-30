@@ -5,11 +5,11 @@
 //  Created by Роман Денисенко on 25.10.23.
 //
 
-import TCA
+import ComposableArchitecture
 
 // MARK: - FibonacciCounterReducer
 
-public struct FibonacciCounterReducer: ReducerProtocol {
+public struct FibonacciCounterReducer: Reducer {
     
     // MARK: - Private
     
@@ -20,9 +20,9 @@ public struct FibonacciCounterReducer: ReducerProtocol {
         return fibonacci(index - 1) + fibonacci(index - 2)
     }
     
-    // MARK: - ReducerProtocol
+    // MARK: - Reducer
     
-    public var body: some ReducerProtocol<FibonacciCounterState, FibonacciCounterAction> {
+    public var body: some Reducer<FibonacciCounterState, FibonacciCounterAction> {
         Scope(state: \.counter, action: /FibonacciCounterAction.counter) {
             CounterReducer()
         }

@@ -5,9 +5,8 @@
 //  Created by Роман Денисенко on 28.10.23.
 //
 
-import Foundation
 import SwiftUI
-import TCA
+import ComposableArchitecture
 
 // MARK: - BindingsView
 
@@ -26,8 +25,8 @@ public struct BindingsView: View {
                 Picker(
                     "",
                     selection: viewStore.binding(
-                        get: \.pickedColor,
-                        send: BindingsAction.setPickerValue
+                        get: \.pickerColor,
+                        send: BindingsAction.setPickerColorValue
                     )
                 ) {
                     ForEach(viewStore.colors, id: \.self) {
@@ -37,7 +36,7 @@ public struct BindingsView: View {
                 .pickerStyle(.segmented)
                 HStack(spacing: 0) {
                     Text("Hide counter")
-                        .foregroundColor(viewStore.pickedColor.color)
+                        .foregroundColor(viewStore.pickerColor.color)
                         .font(.system(size: 23))
                     Toggle(
                         "",
@@ -48,7 +47,7 @@ public struct BindingsView: View {
                     )
                     .toggleStyle(
                         SwitchToggleStyle(
-                            tint: viewStore.pickedColor.color
+                            tint: viewStore.pickerColor.color
                         )
                     )
                 }
@@ -65,16 +64,19 @@ public struct BindingsView: View {
                             CounterView(store: store)
                         }
                     },
-                    else: Text("Where is counter???")
-                        .font(.system(size: 25))
+                    else: { Text("Where is counter???")
+                            .font(.system(size: 25))
+                    }
                 )
-                Slider(value: viewStore.binding(
-                    get: \.sliderValue,
-                    send: BindingsAction.setSliderValue
-                ),
-                       in: 0...viewStore.sliderMaxValue,
-                       step: 1)
-                .accentColor(viewStore.pickedColor.color)
+                Slider(
+                    value: viewStore.binding(
+                        get: \.sliderValue,
+                        send: BindingsAction.setSliderValue
+                    ),
+                    in: 0...viewStore.sliderMaxValue,
+                    step: 1
+                )
+                .accentColor(viewStore.pickerColor.color)
             }
             .padding(.horizontal, 20)
         }
