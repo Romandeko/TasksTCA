@@ -1,5 +1,5 @@
 //
-//  NavigationModuleState.swift
+//  MainState.swift
 //  TasksTCA
 //
 //  Created by Роман Денисенко on 30.10.23.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-// MARK: - NavigationModuleState
+// MARK: - MainState
 
-public struct NavigationModuleState: Equatable {
+public struct MainState: Equatable {
     
     // MARK: - ModuleType
     
@@ -77,7 +77,7 @@ public struct NavigationModuleState: Equatable {
 
 // MARK: - Text
 
-extension NavigationModuleState {
+extension MainState {
     
     public var moduleItemInfoText: (ModuleType) -> String {
         { moduleType in

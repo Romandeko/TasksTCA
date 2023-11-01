@@ -1,5 +1,5 @@
 //
-//  NavigationModuleAction.swift
+//  MainAction.swift
 //  TasksTCA
 //
 //  Created by Роман Денисенко on 30.10.23.
@@ -7,13 +7,13 @@
 
 import Foundation
 
-// MARK: - NavigationModuleAction
+// MARK: - MainAction
 
-public enum NavigationModuleAction: Equatable {
+public enum MainAction: Equatable {
     
     // MARK: - General
     
-    case onModuleItemTap(NavigationModuleState.ModuleType)
+    case onModuleItemTap(MainState.ModuleType)
     
     // MARK: - Children
     

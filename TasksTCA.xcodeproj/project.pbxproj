@@ -28,10 +28,10 @@
 		3F6A1A292AED23BE00CBC3E0 /* BindingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6A1A282AED23BE00CBC3E0 /* BindingsReducer.swift */; };
 		3F91AAD22AE99A2700342273 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91AAD12AE99A2700342273 /* Color.swift */; };
 		3FC93EFB2AF0194B0081F411 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 3FC93EFA2AF0194B0081F411 /* ComposableArchitecture */; };
-		3FC93EFE2AF01ECC0081F411 /* NavigationModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC93EFD2AF01ECC0081F411 /* NavigationModuleView.swift */; };
-		3FC93F002AF01ED80081F411 /* NavigationModuleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC93EFF2AF01ED80081F411 /* NavigationModuleState.swift */; };
-		3FC93F022AF01EE30081F411 /* NavigationModuleAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC93F012AF01EE30081F411 /* NavigationModuleAction.swift */; };
-		3FC93F042AF01EED0081F411 /* NavigationModuleReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC93F032AF01EED0081F411 /* NavigationModuleReducer.swift */; };
+		3FC93EFE2AF01ECC0081F411 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC93EFD2AF01ECC0081F411 /* MainView.swift */; };
+		3FC93F002AF01ED80081F411 /* MainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC93EFF2AF01ED80081F411 /* MainState.swift */; };
+		3FC93F022AF01EE30081F411 /* MainAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC93F012AF01EE30081F411 /* MainAction.swift */; };
+		3FC93F042AF01EED0081F411 /* MainReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC93F032AF01EED0081F411 /* MainReducer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,10 +56,10 @@
 		3F6A1A262AED23B100CBC3E0 /* BindingsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingsAction.swift; sourceTree = "<group>"; };
 		3F6A1A282AED23BE00CBC3E0 /* BindingsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingsReducer.swift; sourceTree = "<group>"; };
 		3F91AAD12AE99A2700342273 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		3FC93EFD2AF01ECC0081F411 /* NavigationModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModuleView.swift; sourceTree = "<group>"; };
-		3FC93EFF2AF01ED80081F411 /* NavigationModuleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModuleState.swift; sourceTree = "<group>"; };
-		3FC93F012AF01EE30081F411 /* NavigationModuleAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModuleAction.swift; sourceTree = "<group>"; };
-		3FC93F032AF01EED0081F411 /* NavigationModuleReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModuleReducer.swift; sourceTree = "<group>"; };
+		3FC93EFD2AF01ECC0081F411 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		3FC93EFF2AF01ED80081F411 /* MainState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainState.swift; sourceTree = "<group>"; };
+		3FC93F012AF01EE30081F411 /* MainAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAction.swift; sourceTree = "<group>"; };
+		3FC93F032AF01EED0081F411 /* MainReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainReducer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,10 +225,10 @@
 		3FC93EFC2AF01EB40081F411 /* NavigationModule */ = {
 			isa = PBXGroup;
 			children = (
-				3FC93EFD2AF01ECC0081F411 /* NavigationModuleView.swift */,
-				3FC93EFF2AF01ED80081F411 /* NavigationModuleState.swift */,
-				3FC93F012AF01EE30081F411 /* NavigationModuleAction.swift */,
-				3FC93F032AF01EED0081F411 /* NavigationModuleReducer.swift */,
+				3FC93EFD2AF01ECC0081F411 /* MainView.swift */,
+				3FC93EFF2AF01ED80081F411 /* MainState.swift */,
+				3FC93F012AF01EE30081F411 /* MainAction.swift */,
+				3FC93F032AF01EED0081F411 /* MainReducer.swift */,
 			);
 			path = NavigationModule;
 			sourceTree = "<group>";
@@ -317,8 +317,8 @@
 				3F0273A12AEABDE800C24937 /* CounterState.swift in Sources */,
 				3F6A1A292AED23BE00CBC3E0 /* BindingsReducer.swift in Sources */,
 				3F281A9D2AE98FFF00C6417E /* FibonacciCounterState.swift in Sources */,
-				3FC93EFE2AF01ECC0081F411 /* NavigationModuleView.swift in Sources */,
-				3FC93F022AF01EE30081F411 /* NavigationModuleAction.swift in Sources */,
+				3FC93EFE2AF01ECC0081F411 /* MainView.swift in Sources */,
+				3FC93F022AF01EE30081F411 /* MainAction.swift in Sources */,
 				3F0273942AEAA60900C24937 /* DoubleCounterState.swift in Sources */,
 				3F0273A52AEABE0B00C24937 /* CounterReducer.swift in Sources */,
 				3F281A9F2AE9900800C6417E /* FibonacciCounterReducer.swift in Sources */,
@@ -327,8 +327,8 @@
 				3F0273982AEAA70300C24937 /* DoubleCounterReducer.swift in Sources */,
 				3F281A9B2AE98FF400C6417E /* FibonacciCounterView.swift in Sources */,
 				3F6A1A252AED23A900CBC3E0 /* BindingsState.swift in Sources */,
-				3FC93F042AF01EED0081F411 /* NavigationModuleReducer.swift in Sources */,
-				3FC93F002AF01ED80081F411 /* NavigationModuleState.swift in Sources */,
+				3FC93F042AF01EED0081F411 /* MainReducer.swift in Sources */,
+				3FC93F002AF01ED80081F411 /* MainState.swift in Sources */,
 				3F91AAD22AE99A2700342273 /* Color.swift in Sources */,
 				3F02739F2AEABDDB00C24937 /* CounterView.swift in Sources */,
 			);
