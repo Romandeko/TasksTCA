@@ -38,71 +38,79 @@ public struct NavigationModuleView: View {
                     .foregroundColor(.black)
                 }
                 .background(
-                    NavigationLink(
-                        isActive: viewStore.binding(
-                            get: \.isCounterActive,
-                            send: NavigationModuleAction.setCounterActive
-                        ),
-                        destination: {
-                            CounterView(
-                                store: store.scope(
-                                    state: \.counter,
-                                    action: NavigationModuleAction.counter
-                                )
+                    IfLetStore(
+                        store.scope(
+                            state: \.counter,
+                            action: NavigationModuleAction.counter
+                        ), then: { store in
+                            NavigationLink(
+                                isActive: viewStore.binding(
+                                    get: \.isCounterActive,
+                                    send: NavigationModuleAction.setCounterActive
+                                ),
+                                destination: {
+                                    CounterView(store: store)
+                                },
+                                label: { EmptyView() }
                             )
-                        },
-                        label: { EmptyView() }
+                        }
                     )
                 )
                 .background(
-                    NavigationLink(
-                        isActive: viewStore.binding(
-                            get: \.isFiboCounterActive,
-                            send: NavigationModuleAction.setFiboCounterActive
-                        ),
-                        destination: {
-                            FibonacciCounterView(
-                                store: store.scope(
-                                    state: \.fiboCounter,
-                                    action: NavigationModuleAction.fibonacciCounter
-                                )
+                    IfLetStore(
+                        store.scope(
+                            state: \.fiboCounter,
+                            action: NavigationModuleAction.fibonacciCounter
+                        ), then: { store in
+                            NavigationLink(
+                                isActive: viewStore.binding(
+                                    get: \.isFiboCounterActive,
+                                    send: NavigationModuleAction.setFiboCounterActive
+                                ),
+                                destination: {
+                                    FibonacciCounterView(store: store)
+                                },
+                                label: { EmptyView() }
                             )
-                        },
-                        label: { EmptyView() }
+                        }
                     )
                 )
                 .background(
-                    NavigationLink(
-                        isActive: viewStore.binding(
-                            get: \.isDoubleCounterActive,
-                            send: NavigationModuleAction.setDoubleCounterActive
-                        ),
-                        destination: {
-                            DoubleCounterView(
-                                store: store.scope(
-                                    state: \.doubleCounter,
-                                    action: NavigationModuleAction.doubleCounter
-                                )
+                    IfLetStore(
+                        store.scope(
+                            state: \.doubleCounter,
+                            action: NavigationModuleAction.doubleCounter
+                        ), then: { store in
+                            NavigationLink(
+                                isActive: viewStore.binding(
+                                    get: \.isDoubleCounterActive,
+                                    send: NavigationModuleAction.setDoubleCounterActive
+                                ),
+                                destination: {
+                                    DoubleCounterView(store: store)
+                                },
+                                label: { EmptyView() }
                             )
-                        },
-                        label: { EmptyView() }
+                        }
                     )
                 )
                 .background(
-                    NavigationLink(
-                        isActive: viewStore.binding(
-                            get: \.isBindingsActive,
-                            send: NavigationModuleAction.setBindingsActive
-                        ),
-                        destination: {
-                            BindingsView(
-                                store: store.scope(
-                                    state: \.bindings,
-                                    action: NavigationModuleAction.bindings
-                                )
+                    IfLetStore(
+                        store.scope(
+                            state: \.bindings,
+                            action: NavigationModuleAction.bindings
+                        ), then: { store in
+                            NavigationLink(
+                                isActive: viewStore.binding(
+                                    get: \.isBindingsActive,
+                                    send: NavigationModuleAction.setBindingsActive
+                                ),
+                                destination: {
+                                    BindingsView(store: store)
+                                },
+                                label: { EmptyView() }
                             )
-                        },
-                        label: { EmptyView() }
+                        }
                     )
                 )
             }

@@ -15,18 +15,6 @@ public struct NavigationModuleReducer: Reducer {
     // MARK: - Reducer
     
     public var body: some Reducer<NavigationModuleState, NavigationModuleAction> {
-        Scope(state: \.counter, action: /NavigationModuleAction.counter) {
-            CounterReducer()
-        }
-        Scope(state: \.fiboCounter, action: /NavigationModuleAction.fibonacciCounter) {
-            FibonacciCounterReducer()
-        }
-        Scope(state: \.doubleCounter, action: /NavigationModuleAction.doubleCounter) {
-            DoubleCounterReducer()
-        }
-        Scope(state: \.bindings, action: /NavigationModuleAction.bindings) {
-            BindingsReducer()
-        }
         Reduce { state, action in
             switch action {
             case .onModuleItemTap(let moduleType):
@@ -56,6 +44,18 @@ public struct NavigationModuleReducer: Reducer {
                 return .none
             }
             return .none
+        }
+        .ifLet(\.counter, action: /NavigationModuleAction.counter) {
+            CounterReducer()
+        }
+        .ifLet(\.fiboCounter, action: /NavigationModuleAction.fibonacciCounter) {
+            FibonacciCounterReducer()
+        }
+        .ifLet(\.doubleCounter, action: /NavigationModuleAction.doubleCounter) {
+            DoubleCounterReducer()
+        }
+        .ifLet(\.bindings, action: /NavigationModuleAction.bindings) {
+            BindingsReducer()
         }
     }
 }

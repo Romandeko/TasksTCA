@@ -49,16 +49,16 @@ public struct NavigationModuleState: Equatable {
     // MARK: - Children
     
     /// An instance of `counter` submodule
-    public var counter = CounterState()
+    public var counter: CounterState? = CounterState()
     
     /// An instance of `fibonacciCounter` submodule
-    public var fiboCounter = FibonacciCounterState()
+    public var fiboCounter: FibonacciCounterState? = FibonacciCounterState()
     
     /// An instance of `doubleCounter` submodule
-    public var doubleCounter = DoubleCounterState()
+    public var doubleCounter: DoubleCounterState? = DoubleCounterState()
     
     /// An instance of `bindings`' submodule
-    public var bindings = BindingsState()
+    public var bindings: BindingsState? = BindingsState()
     
     // MARK: - Navigation
     
