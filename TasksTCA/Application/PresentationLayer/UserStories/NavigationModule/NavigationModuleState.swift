@@ -11,41 +11,79 @@ import Foundation
 
 public struct NavigationModuleState: Equatable {
     
+    // MARK: - ModuleType
+    
+    public enum ModuleType: Equatable, CaseIterable {
+        
+        // MARK: - Cases
+        
+        case counter
+        case fiboCounter
+        case doubleCounter
+        case bindings
+        
+        // MARK: - Useful
+        
+        public var action: NavigationModuleAction {
+            switch self {
+            case .counter:
+                return .setCounterActive(true)
+            case .fiboCounter:
+                return .setFiboCounterActive(true)
+            case .doubleCounter:
+                return .setDoubleCounterActive(true)
+            case .bindings:
+                return .setBindingsActive(true)
+            }
+        }
+        
+        public var text: String {
+            switch self {
+            case .counter:
+                return "Counter"
+            case .fiboCounter:
+                return "Fibonacci counter"
+            case .doubleCounter:
+                return "Double counter"
+            case .bindings:
+                return "Bindings"
+            }
+        }
+    }
+    
     // MARK: - Properties
     
-    /// How many each module was appeared array
-    public var modulesAppearanceArray = [0,0,0,0]
-        
-    /// How many each module was appeared string array
-    public var modulesAppearanceStringArray : [String] {
-        modulesAppearanceArray.map { $0 == 0 ? "" : String($0) }
-    }
+    /// Array of all modules
+    public let modulesArray = ModuleType.allCases
+    
+    /// How many each module was appeared dictionary
+    public var modulesInfo = [ModuleType:Int](uniqueKeysWithValues: ModuleType.allCases.map { ($0, 0) } )
     
     // MARK: - Children
     
-    /// An instance of 'counter' submodule
-    public var CounterModule = CounterState()
+    /// An instance of `counter` submodule
+    public var counter = CounterState()
     
-    /// An instance of 'fibonacciCounter' submodule
-    public var FiboCounterModule = FibonacciCounterState()
+    /// An instance of `fibonacciCounter` submodule
+    public var fiboCounter = FibonacciCounterState()
     
-    /// An instance of 'doubleCounter' submodule
-    public var DoubleCounterModule = DoubleCounterState()
+    /// An instance of `doubleCounter` submodule
+    public var doubleCounter = DoubleCounterState()
     
-    /// An instance of 'bindings'' submodule
-    public var BindingsModule = BindingsState()
+    /// An instance of `bindings`' submodule
+    public var bindings = BindingsState()
     
     // MARK: - Navigation
     
     /// If counter module is active
-    public var isCounterModuleActive = false
+    public var isCounterActive = false
     
     /// If fibonacci counter module is active
-    public var isFiboCounterModuleActive = false
+    public var isFiboCounterActive = false
     
     /// If double counter module is active
-    public var isDoubleCounterModuleActive = false
+    public var isDoubleCounterActive = false
     
     /// If bindings module is active
-    public var isBindingsModuleActive = false
+    public var isBindingsActive = false
 }

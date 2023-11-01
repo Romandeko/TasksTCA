@@ -24,76 +24,124 @@ public struct NavigationModuleView: View {
             NavigationView  {
                 List {
                     Section(header: Text("👶🏿Beginner")) {
+                        ForEach(viewStore.modulesArray, id: \.self) { module  in
+                            TextView (
+                                text: module.text,
+                                store: viewStore,
+                                action: module.action
+                            )
+                        }
+                    }
+                    .font(.system(size: 17))
+                    .foregroundColor(.black)
+                }
+                .background(
                         NavigationLink(
                             isActive: viewStore.binding(
-                                get: \.isCounterModuleActive,
-                                send: NavigationModuleAction.setCounterModuleActive
+                                get: \.isCounterActive,
+                                send: NavigationModuleAction.setCounterActive
                             ),
                             destination: {
                                 CounterView(
                                     store: store.scope(
-                                        state: \.CounterModule,
-                                        action: NavigationModuleAction.counterModuleAction
+                                        state: \.counter,
+                                        action: NavigationModuleAction.counter
                                     )
                                 )
                             },
-                            label: {
-                                Text("Counter \(viewStore.state.modulesAppearanceStringArray[0])")
-                            }
+                            label: { EmptyView() }
                         )
-                        NavigationLink(
-                            isActive: viewStore.binding(
-                                get: \.isFiboCounterModuleActive,
-                                send: NavigationModuleAction.setFiboCounterModuleActive
-                            ),
-                            destination: {
-                                FibonacciCounterView(
-                                    store: store.scope(
-                                        state: \.FiboCounterModule,
-                                        action: NavigationModuleAction.fiboCounterModuleAction
-                                    )
+                )
+                .background(
+                    NavigationLink(
+                        isActive: viewStore.binding(
+                            get: \.isFiboCounterActive,
+                            send: NavigationModuleAction.setFiboCounterActive
+                        ),
+                        destination: {
+                            FibonacciCounterView(
+                                store: store.scope(
+                                    state: \.fiboCounter,
+                                    action: NavigationModuleAction.fibonacciCounter
                                 )
-                            },
-                            label: {
-                                Text("Fibonacci counter \(viewStore.state.modulesAppearanceStringArray[1])")
-                            }
-                        )
-                        NavigationLink(
-                            isActive: viewStore.binding(
-                                get: \.isDoubleCounterModuleActive,
-                                send: NavigationModuleAction.setDoubleCounterModuleActive
-                            ),
-                            destination: {
-                                DoubleCounterView(
-                                    store: store.scope(
-                                        state: \.DoubleCounterModule,
-                                        action: NavigationModuleAction.doubleCounterModuleAction
-                                    )
+                            )
+                        },
+                        label: { EmptyView() }
+                    )
+                )
+                .background(
+                    NavigationLink(
+                        isActive: viewStore.binding(
+                            get: \.isDoubleCounterActive,
+                            send: NavigationModuleAction.setDoubleCounterActive
+                        ),
+                        destination: {
+                            DoubleCounterView(
+                                store: store.scope(
+                                    state: \.doubleCounter,
+                                    action: NavigationModuleAction.doubleCounter
                                 )
-                            },
-                            label: {
-                                Text("Double counter \(viewStore.state.modulesAppearanceStringArray[2])")
-                            }
-                        )
-                        NavigationLink(
-                            isActive: viewStore.binding(
-                                get: \.isBindingsModuleActive,
-                                send: NavigationModuleAction.setBindingsModuleActive
-                            ),
-                            destination: {
-                                BindingsView(
-                                    store: store.scope(
-                                        state: \.BindingsModule,
-                                        action: NavigationModuleAction.bindingsModuleAction
-                                    )
+                            )
+                        },
+                        label: { EmptyView() }
+                    )
+                )
+                .background(
+                    NavigationLink(
+                        isActive: viewStore.binding(
+                            get: \.isBindingsActive,
+                            send: NavigationModuleAction.setBindingsActive
+                        ),
+                        destination: {
+                            BindingsView(
+                                store: store.scope(
+                                    state: \.bindings,
+                                    action: NavigationModuleAction.bindings
                                 )
-                            },
-                            label: {
-                                Text("Bindings \(viewStore.state.modulesAppearanceStringArray[3])")
-                            }
-                        )
-                    }
-                    .font(.system(size: 17))
+                            )
+                        },
+                        label: { EmptyView() }
+                    )
+                )
+            }
+        }
+    }
+    
+    // MARK: - TextView
+    
+    private struct TextView: View {
+        
+        // MARK: - Properties
+        
+        /// Text for button
+        private var text: String
+        
+        /// The store powering the `NavigationModule` reducer
+        private var store: ViewStore<NavigationModuleState, NavigationModuleAction>
+        
+        /// Button action
+        private var action: NavigationModuleAction
+        
+        // MARK: - Initializers
+        
+        public init(
+            text: String,
+            store: ViewStore<NavigationModuleState, NavigationModuleAction>,
+            action: NavigationModuleAction
+        ) {
+            self.text = text
+            self.store = store
+            self.action = action
+        }
+        
+        // MARK: - View
+        
+        public var body: some View  {
+            VStack(spacing: 0) {
+                Button {
+                    store.send(action)
+                } label: {
+                    Text(text)
                 }
             }
         }

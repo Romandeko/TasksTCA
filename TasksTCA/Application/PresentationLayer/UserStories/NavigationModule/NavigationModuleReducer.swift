@@ -15,40 +15,32 @@ public struct NavigationModuleReducer: Reducer {
     // MARK: - Reducer
     
     public var body: some Reducer<NavigationModuleState, NavigationModuleAction> {
-        Scope(state: \.CounterModule, action: /NavigationModuleAction.counterModuleAction) {
+        Scope(state: \.counter, action: /NavigationModuleAction.counter) {
             CounterReducer()
         }
-        Scope(state: \.FiboCounterModule, action: /NavigationModuleAction.fiboCounterModuleAction) {
+        Scope(state: \.fiboCounter, action: /NavigationModuleAction.fibonacciCounter) {
             FibonacciCounterReducer()
         }
-        Scope(state: \.DoubleCounterModule, action: /NavigationModuleAction.doubleCounterModuleAction) {
+        Scope(state: \.doubleCounter, action: /NavigationModuleAction.doubleCounter) {
             DoubleCounterReducer()
         }
-        Scope(state: \.BindingsModule, action: /NavigationModuleAction.bindingsModuleAction) {
+        Scope(state: \.bindings, action: /NavigationModuleAction.bindings) {
             BindingsReducer()
         }
         Reduce { state, action in
             switch action {
-            case .setCounterModuleActive(let isActive):
-                state.isCounterModuleActive = isActive
-                if isActive {
-                    state.modulesAppearanceArray[0] += 1
-                }
-            case .setFiboCounterModuleActive(let isActive):
-                state.isFiboCounterModuleActive = isActive
-                if isActive {
-                    state.modulesAppearanceArray[1] += 1
-                }
-            case .setDoubleCounterModuleActive(let isActive):
-                state.isDoubleCounterModuleActive = isActive
-                if isActive {
-                    state.modulesAppearanceArray[2] += 1
-                }
-            case .setBindingsModuleActive(let isActive):
-                state.isBindingsModuleActive = isActive
-                if isActive {
-                    state.modulesAppearanceArray[3] += 1
-                }
+            case .setCounterActive(let isActive):
+                state.isCounterActive = isActive
+                state.modulesInfo[.counter, default: 0] += isActive ? 1 : 0
+            case .setFiboCounterActive(let isActive):
+                state.isFiboCounterActive = isActive
+                state.modulesInfo[.fiboCounter, default: 0] += isActive ? 1 : 0
+            case .setDoubleCounterActive(let isActive):
+                state.isDoubleCounterActive = isActive
+                state.modulesInfo[.doubleCounter, default: 0] += isActive ? 1 : 0
+            case .setBindingsActive(let isActive):
+                state.isBindingsActive = isActive
+                state.modulesInfo[.bindings, default: 0] += isActive ? 1 : 0
             default:
                 return .none
             }
