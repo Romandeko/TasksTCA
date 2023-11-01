@@ -15,10 +15,10 @@ struct TasksTCAApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationModuleView(
+            MainView(
                 store: Store(
-                    initialState: NavigationModuleState(),
-                    reducer: NavigationModuleReducer()
+                    initialState: MainState(),
+                    reducer: MainReducer()
                 )
             )
         }

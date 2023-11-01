@@ -1,5 +1,5 @@
 //
-//  NavigationModuleReducer.swift
+//  MainReducer.swift
 //  TasksTCA
 //
 //  Created by Роман Денисенко on 30.10.23.
@@ -8,13 +8,13 @@
 import Foundation
 import ComposableArchitecture
 
-// MARK: - NavigationModuleReducer
+// MARK: - MainReducer
 
-public struct NavigationModuleReducer: Reducer {
+public struct MainReducer: Reducer {
     
     // MARK: - Reducer
     
-    public var body: some Reducer<NavigationModuleState, NavigationModuleAction> {
+    public var body: some Reducer<MainState, MainAction> {
         Reduce { state, action in
             switch action {
             case .onModuleItemTap(let moduleType):
@@ -45,16 +45,16 @@ public struct NavigationModuleReducer: Reducer {
             }
             return .none
         }
-        .ifLet(\.counter, action: /NavigationModuleAction.counter) {
+        .ifLet(\.counter, action: /MainAction.counter) {
             CounterReducer()
         }
-        .ifLet(\.fiboCounter, action: /NavigationModuleAction.fibonacciCounter) {
+        .ifLet(\.fiboCounter, action: /MainAction.fibonacciCounter) {
             FibonacciCounterReducer()
         }
-        .ifLet(\.doubleCounter, action: /NavigationModuleAction.doubleCounter) {
+        .ifLet(\.doubleCounter, action: /MainAction.doubleCounter) {
             DoubleCounterReducer()
         }
-        .ifLet(\.bindings, action: /NavigationModuleAction.bindings) {
+        .ifLet(\.bindings, action: /MainAction.bindings) {
             BindingsReducer()
         }
     }
