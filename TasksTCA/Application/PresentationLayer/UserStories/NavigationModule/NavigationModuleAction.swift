@@ -11,6 +11,10 @@ import Foundation
 
 public enum NavigationModuleAction: Equatable {
     
+    // MARK: - General
+    
+    case onModuleItemTap(NavigationModuleState.ModuleType)
+    
     // MARK: - Children
     
     /// Actions of child module `Counter`

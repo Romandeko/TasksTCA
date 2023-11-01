@@ -24,20 +24,7 @@ public struct NavigationModuleState: Equatable {
         
         // MARK: - Useful
         
-        public var action: NavigationModuleAction {
-            switch self {
-            case .counter:
-                return .setCounterActive(true)
-            case .fiboCounter:
-                return .setFiboCounterActive(true)
-            case .doubleCounter:
-                return .setDoubleCounterActive(true)
-            case .bindings:
-                return .setBindingsActive(true)
-            }
-        }
-        
-        public var text: String {
+        public var title: String {
             switch self {
             case .counter:
                 return "Counter"
@@ -54,7 +41,7 @@ public struct NavigationModuleState: Equatable {
     // MARK: - Properties
     
     /// Array of all modules
-    public let modulesArray = ModuleType.allCases
+    public let moduleTypes = ModuleType.allCases
     
     /// How many each module was appeared dictionary
     public var modulesInfo = [ModuleType:Int](uniqueKeysWithValues: ModuleType.allCases.map { ($0, 0) } )
@@ -86,4 +73,16 @@ public struct NavigationModuleState: Equatable {
     
     /// If bindings module is active
     public var isBindingsActive = false
+}
+
+// MARK: - Text
+
+extension NavigationModuleState {
+    
+    public var moduleItemInfoText: (ModuleType) -> String {
+        { moduleType in
+            let count = modulesInfo[moduleType, default: 0]
+            return count == 0 ? "" : "Appearings count: \(count)"
+        }
+    }
 }

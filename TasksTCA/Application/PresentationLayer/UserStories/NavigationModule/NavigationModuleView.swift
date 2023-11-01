@@ -21,14 +21,16 @@ public struct NavigationModuleView: View {
     
     public var body: some View {
         WithViewStore(store) { viewStore in
-            NavigationView  {
+            NavigationView {
                 List {
-                    Section(header: Text("👶🏿Beginner")) {
-                        ForEach(viewStore.modulesArray, id: \.self) { module  in
-                            TextView (
-                                text: module.text,
-                                store: viewStore,
-                                action: module.action
+                    Section(header: Text("👶🏿 Beginner")) {
+                        ForEach(viewStore.moduleTypes, id: \.self) { moduleType in
+                            ModuleItemView (
+                                title: moduleType.title,
+                                subtitle: viewStore.moduleItemInfoText(moduleType),
+                                onTapAction: {
+                                    viewStore.send(.onModuleItemTap(moduleType))
+                                }
                             )
                         }
                     }
@@ -36,21 +38,21 @@ public struct NavigationModuleView: View {
                     .foregroundColor(.black)
                 }
                 .background(
-                        NavigationLink(
-                            isActive: viewStore.binding(
-                                get: \.isCounterActive,
-                                send: NavigationModuleAction.setCounterActive
-                            ),
-                            destination: {
-                                CounterView(
-                                    store: store.scope(
-                                        state: \.counter,
-                                        action: NavigationModuleAction.counter
-                                    )
+                    NavigationLink(
+                        isActive: viewStore.binding(
+                            get: \.isCounterActive,
+                            send: NavigationModuleAction.setCounterActive
+                        ),
+                        destination: {
+                            CounterView(
+                                store: store.scope(
+                                    state: \.counter,
+                                    action: NavigationModuleAction.counter
                                 )
-                            },
-                            label: { EmptyView() }
-                        )
+                            )
+                        },
+                        label: { EmptyView() }
+                    )
                 )
                 .background(
                     NavigationLink(
@@ -107,42 +109,46 @@ public struct NavigationModuleView: View {
         }
     }
     
-    // MARK: - TextView
+    // MARK: - ModuleItemView
     
-    private struct TextView: View {
+    private struct ModuleItemView: View {
         
         // MARK: - Properties
         
         /// Text for button
-        private var text: String
+        private let title: String
         
-        /// The store powering the `NavigationModule` reducer
-        private var store: ViewStore<NavigationModuleState, NavigationModuleAction>
+        /// subtitle for button
+        private let subtitle: String
         
         /// Button action
-        private var action: NavigationModuleAction
+        private let onTapAction: () -> ()
         
         // MARK: - Initializers
         
-        public init(
-            text: String,
-            store: ViewStore<NavigationModuleState, NavigationModuleAction>,
-            action: NavigationModuleAction
+        init(
+            title: String,
+            subtitle: String,
+            onTapAction: @escaping () -> ()
         ) {
-            self.text = text
-            self.store = store
-            self.action = action
+            self.title = title
+            self.subtitle = subtitle
+            self.onTapAction = onTapAction
         }
         
         // MARK: - View
         
-        public var body: some View  {
-            VStack(spacing: 0) {
+        var body: some View  {
+            HStack(spacing: 0) {
                 Button {
-                    store.send(action)
+                    onTapAction()
                 } label: {
-                    Text(text)
+                    Text(title)
                 }
+                Spacer()
+                Text(subtitle)
+                Image(systemName: "chevron.right")
+                    .foregroundColor(.gray)
             }
         }
     }

@@ -29,6 +29,17 @@ public struct NavigationModuleReducer: Reducer {
         }
         Reduce { state, action in
             switch action {
+            case .onModuleItemTap(let moduleType):
+                switch moduleType {
+                case .counter:
+                    return .send(.setCounterActive(true))
+                case .fiboCounter:
+                    return .send(.setFiboCounterActive(true))
+                case .doubleCounter:
+                    return .send(.setDoubleCounterActive(true))
+                case .bindings:
+                    return .send(.setBindingsActive(true))
+                }
             case .setCounterActive(let isActive):
                 state.isCounterActive = isActive
                 state.modulesInfo[.counter, default: 0] += isActive ? 1 : 0
