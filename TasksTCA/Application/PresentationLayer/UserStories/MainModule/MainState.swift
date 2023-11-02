@@ -21,6 +21,7 @@ public struct MainState: Equatable {
         case fiboCounter
         case doubleCounter
         case bindings
+        case interactiveList
         
         // MARK: - Useful
         
@@ -34,6 +35,8 @@ public struct MainState: Equatable {
                 return "Double counter"
             case .bindings:
                 return "Bindings"
+            case .interactiveList:
+                return "Interactive list"
             }
         }
     }
@@ -60,6 +63,9 @@ public struct MainState: Equatable {
     /// An instance of `bindings`' submodule
     public var bindings: BindingsState? = BindingsState()
     
+    /// An instance of `interactiveList`' submodule
+    public var interactiveList: InteractiveListState? = InteractiveListState()
+    
     // MARK: - Navigation
     
     /// If counter module is active
@@ -73,6 +79,9 @@ public struct MainState: Equatable {
     
     /// If bindings module is active
     public var isBindingsActive = false
+    
+    /// If interactiveList module is active
+    public var isInteractiveListActive = false
 }
 
 // MARK: - Text
@@ -82,7 +91,7 @@ extension MainState {
     public var moduleItemInfoText: (ModuleType) -> String {
         { moduleType in
             let count = modulesInfo[moduleType, default: 0]
-            return count == 0 ? "" : "Appearings count: \(count)"
+            return count == 0 ? "" : "Appearances count: \(count)"
         }
     }
 }
