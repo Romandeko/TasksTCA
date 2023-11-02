@@ -27,6 +27,8 @@ public struct MainReducer: Reducer {
                     return .send(.setDoubleCounterActive(true))
                 case .bindings:
                     return .send(.setBindingsActive(true))
+                case .interactiveList:
+                    return .send(.setInteractiveListActive(true))
                 }
             case .setCounterActive(let isActive):
                 state.isCounterActive = isActive
@@ -40,6 +42,9 @@ public struct MainReducer: Reducer {
             case .setBindingsActive(let isActive):
                 state.isBindingsActive = isActive
                 state.modulesInfo[.bindings, default: 0] += isActive ? 1 : 0
+            case .setInteractiveListActive(let isActive):
+                state.isInteractiveListActive = isActive
+                state.modulesInfo[.interactiveList, default: 0] += isActive ? 1 : 0
             default:
                 return .none
             }
@@ -56,6 +61,9 @@ public struct MainReducer: Reducer {
         }
         .ifLet(\.bindings, action: /MainAction.bindings) {
             BindingsReducer()
+        }
+        .ifLet(\.interactiveList, action: /MainAction.interactiveList) {
+            InteractiveListReducer()
         }
     }
 }

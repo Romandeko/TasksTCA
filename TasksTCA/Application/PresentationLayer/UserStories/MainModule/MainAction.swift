@@ -29,17 +29,23 @@ public enum MainAction: Equatable {
     /// Actions of child module `Bindings`
     case bindings(BindingsAction)
     
+    /// Actions of child module `InteractiveList`
+    case interactiveList(InteractiveListAction)
+    
     // MARK: - Navigation
     
-    /// Setter for `isCounterModuleActive` property binding
+    /// Setter for `isCounterActive` property binding
     case setCounterActive(Bool)
     
-    /// Setter for '`sFiboCounterModuleActive` property binding
+    /// Setter for '`sFiboCounterActive` property binding
     case setFiboCounterActive(Bool)
     
-    /// Setter for `isDoubleCounterModuleActive` property binding
+    /// Setter for `isDoubleCounterActive` property binding
     case setDoubleCounterActive(Bool)
     
-    /// Setter for `isBindingsModuleActive'` property binding
+    /// Setter for `isBindingsMActive'` property binding
     case setBindingsActive(Bool)
+    
+    /// Setter for `isInteractiveListActive'` property binding
+    case setInteractiveListActive(Bool)
 }
