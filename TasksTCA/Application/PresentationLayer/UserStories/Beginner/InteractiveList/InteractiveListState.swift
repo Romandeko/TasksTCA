@@ -11,6 +11,13 @@ import ComposableArchitecture
 
 public struct InteractiveListState: Equatable {
     
+    // MARK: - Properties
+    
+    /// Array of  unique first symbols of items titles
+    public var sectionSymbolsArray: [String] {
+        Set(items.map( { String($0.title.prefix(1)) } )).sorted()
+    }
+    
     // MARK: - Children
     
     /// Array of identified items

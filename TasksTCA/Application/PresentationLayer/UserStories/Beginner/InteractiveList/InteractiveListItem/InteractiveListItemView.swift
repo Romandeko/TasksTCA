@@ -30,11 +30,9 @@ public struct InteractiveListItemView: View {
                 Spacer()
                 Image(systemName: viewStore.image)
                     .renderingMode(.original)
-                Button(
-                    action: {
-                        viewStore.send(.checkBoxToggled)
-                    }
-                ) {
+                Button {
+                    viewStore.send(.checkBoxToggled)
+                } label : {
                     Image (
                         systemName: viewStore.isChecked
                         ? "checkmark.square"
@@ -48,3 +46,4 @@ public struct InteractiveListItemView: View {
         }
     }
 }
+

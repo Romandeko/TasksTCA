@@ -26,7 +26,7 @@ public enum InteractiveListAction: Equatable {
     case removeCheckedItems
     
     /// Delete items with given indexes
-    case delete(IndexSet)
+    case delete(IndexSet, String)
     
     // MARK: - Children
     

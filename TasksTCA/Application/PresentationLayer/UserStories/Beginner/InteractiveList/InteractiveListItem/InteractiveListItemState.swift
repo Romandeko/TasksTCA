@@ -70,6 +70,6 @@ extension InteractiveListItemState {
             InteractiveListItemState.random(),
             InteractiveListItemState.random(),
             InteractiveListItemState.random()
-        ]
+         ].sorted(by: { $0.title < $1.title })
     }
 }
