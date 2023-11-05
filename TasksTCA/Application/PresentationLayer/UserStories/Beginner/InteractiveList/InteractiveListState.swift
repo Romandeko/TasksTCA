@@ -15,7 +15,11 @@ public struct InteractiveListState: Equatable {
     
     /// Array of  unique first symbols of items titles
     public var sectionSymbolsArray: [String] {
-        Set(items.map( { String($0.title.prefix(1)) } )).sorted()
+        Set(
+            items.map {
+                String($0.title.prefix(1))
+            }
+        ).sorted()
     }
     
     // MARK: - Children

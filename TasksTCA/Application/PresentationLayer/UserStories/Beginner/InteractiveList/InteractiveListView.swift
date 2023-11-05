@@ -45,15 +45,17 @@ public struct InteractiveListView: View {
                     }
                 }
             }
-            .navigationBarItems(trailing:
-              Button {
-                viewStore.send(.addRandom, animation: .default)
-              } label: {
-                Text("Add")
-                    .foregroundColor(.black)
-                    .font(.system(size: 20))
-              }
-            )
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        viewStore.send(.addRandom, animation: .default)
+                    } label: {
+                        Text("Add")
+                            .foregroundColor(.black)
+                            .font(.system(size: 20))
+                    }
+                }
+            }
             .onAppear {
                 viewStore.send(.onAppear)
             }

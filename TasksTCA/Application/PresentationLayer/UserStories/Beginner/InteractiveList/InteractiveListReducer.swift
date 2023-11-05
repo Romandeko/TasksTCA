@@ -28,13 +28,16 @@ public struct InteractiveListReducer: Reducer {
                 state.items = IdentifiedArrayOf(uniqueElements: randomItems)
             case .addRandom:
                 let randomItem = InteractiveListItemState.random()
-                let insertIndex = state.items.firstIndex(where: { $0.title > randomItem.title } )
+                let insertIndex = state.items.firstIndex { $0.title > randomItem.title }
                 state.items.insert(randomItem, at: insertIndex ?? state.items.count)
             case .removeCheckedItems:
                 state.items.removeAll(where: \.isChecked)
             case .delete(let offset, let letter):
-                let symbolIndex = state.items.firstIndex(where: { String($0.title.first.unsafelyUnwrapped) == letter })
-                state.items.remove(at: symbolIndex.unsafelyUnwrapped + offset.first.unsafelyUnwrapped)
+                guard let offsetIndex = offset.first,
+                      let symbolIndex = state.items.firstIndex(where: { String($0.title.first.unsafelyUnwrapped) == letter }) else {
+                    return .none
+                }
+                state.items.remove(at: symbolIndex + offsetIndex)
             case .item(id: _, action: .checkBoxToggled):
                 return .send(.removeCheckedItems)
                     .debounce(
