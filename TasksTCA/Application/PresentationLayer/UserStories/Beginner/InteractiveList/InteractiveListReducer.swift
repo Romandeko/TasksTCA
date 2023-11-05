@@ -27,8 +27,9 @@ public struct InteractiveListReducer: Reducer {
                 let randomItems = InteractiveListItemState.randomItems()
                 state.items = IdentifiedArrayOf(uniqueElements: randomItems)
             case .addRandom:
-                state.items.append(.random())
-                state.items.sort { $0.title < $1.title }
+                let randomItem = InteractiveListItemState.random()
+                let insertIndex = state.items.firstIndex(where: { $0.title > randomItem.title } )
+                state.items.insert(randomItem, at: insertIndex ?? state.items.count)
             case .removeCheckedItems:
                 state.items.removeAll(where: \.isChecked)
             case .delete(let offset, let letter):
