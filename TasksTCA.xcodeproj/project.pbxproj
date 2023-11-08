@@ -15,6 +15,14 @@
 		3F0273A32AEABE0400C24937 /* CounterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0273A22AEABE0400C24937 /* CounterAction.swift */; };
 		3F0273A52AEABE0B00C24937 /* CounterReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0273A42AEABE0B00C24937 /* CounterReducer.swift */; };
 		3F0273A72AEAC67F00C24937 /* DoubleCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0273A62AEAC67F00C24937 /* DoubleCounterView.swift */; };
+		3F0F6F7E2AFB826800B730C8 /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6F7D2AFB826800B730C8 /* ArticleService.swift */; };
+		3F0F6F802AFB827900B730C8 /* ArticleServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6F7F2AFB827900B730C8 /* ArticleServiceImplementation.swift */; };
+		3F0F6F832AFB829C00B730C8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6F822AFB829C00B730C8 /* Constants.swift */; };
+		3F0F6F852AFB82B200B730C8 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6F842AFB82B200B730C8 /* WebService.swift */; };
+		3F0F6F882AFB82C900B730C8 /* ArticlePlainObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6F872AFB82C900B730C8 /* ArticlePlainObject.swift */; };
+		3F0F6F8B2AFB82EB00B730C8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3F0F6F8A2AFB82EB00B730C8 /* Kingfisher */; };
+		3F0F6F8E2AFB831600B730C8 /* ServiceCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3F0F6F8D2AFB831600B730C8 /* ServiceCore */; };
+		3F0F6F912AFB833100B730C8 /* HTTPTransport in Frameworks */ = {isa = PBXBuildFile; productRef = 3F0F6F902AFB833100B730C8 /* HTTPTransport */; };
 		3F281A862AE98F9600C6417E /* TasksTCAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F281A852AE98F9600C6417E /* TasksTCAApp.swift */; };
 		3F281A8A2AE98F9700C6417E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F281A892AE98F9700C6417E /* Assets.xcassets */; };
 		3F281A8D2AE98F9700C6417E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F281A8C2AE98F9700C6417E /* Preview Assets.xcassets */; };
@@ -51,6 +59,11 @@
 		3F0273A22AEABE0400C24937 /* CounterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterAction.swift; sourceTree = "<group>"; };
 		3F0273A42AEABE0B00C24937 /* CounterReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterReducer.swift; sourceTree = "<group>"; };
 		3F0273A62AEAC67F00C24937 /* DoubleCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleCounterView.swift; sourceTree = "<group>"; };
+		3F0F6F7D2AFB826800B730C8 /* ArticleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleService.swift; sourceTree = "<group>"; };
+		3F0F6F7F2AFB827900B730C8 /* ArticleServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleServiceImplementation.swift; sourceTree = "<group>"; };
+		3F0F6F822AFB829C00B730C8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3F0F6F842AFB82B200B730C8 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		3F0F6F872AFB82C900B730C8 /* ArticlePlainObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePlainObject.swift; sourceTree = "<group>"; };
 		3F281A822AE98F9600C6417E /* TasksTCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TasksTCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F281A852AE98F9600C6417E /* TasksTCAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTCAApp.swift; sourceTree = "<group>"; };
 		3F281A892AE98F9700C6417E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,6 +96,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F0F6F8B2AFB82EB00B730C8 /* Kingfisher in Frameworks */,
+				3F0F6F8E2AFB831600B730C8 /* ServiceCore in Frameworks */,
+				3F0F6F912AFB833100B730C8 /* HTTPTransport in Frameworks */,
 				3FC93EFB2AF0194B0081F411 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,12 +145,47 @@
 			path = Counter;
 			sourceTree = "<group>";
 		};
+		3F0F6F7A2AFB823B00B730C8 /* BusinessLayer */ = {
+			isa = PBXGroup;
+			children = (
+				3F0F6F7B2AFB824D00B730C8 /* Services */,
+			);
+			path = BusinessLayer;
+			sourceTree = "<group>";
+		};
+		3F0F6F7B2AFB824D00B730C8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3F0F6F7D2AFB826800B730C8 /* ArticleService.swift */,
+				3F0F6F7F2AFB827900B730C8 /* ArticleServiceImplementation.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3F0F6F812AFB828E00B730C8 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				3F0F6F822AFB829C00B730C8 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		3F0F6F862AFB82B800B730C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3F0F6F872AFB82C900B730C8 /* ArticlePlainObject.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3F2814732AEFC0A3000B6F2E /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				3F4F0A762AEBABCF00D4BB41 /* ApplicationLayer */,
+				3F0F6F7A2AFB823B00B730C8 /* BusinessLayer */,
 				3F0273882AEA9DD600C24937 /* PresentationLayer */,
 				3F91AACF2AE99A0500342273 /* Common */,
+				3F0F6F862AFB82B800B730C8 /* Models */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -226,6 +277,7 @@
 		3F91AACF2AE99A0500342273 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3F0F6F812AFB828E00B730C8 /* Constants */,
 				3F91AAD02AE99A1800342273 /* Extensions */,
 			);
 			path = Common;
@@ -235,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				3F91AAD12AE99A2700342273 /* Color.swift */,
+				3F0F6F842AFB82B200B730C8 /* WebService.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -291,6 +344,9 @@
 			name = TasksTCA;
 			packageProductDependencies = (
 				3FC93EFA2AF0194B0081F411 /* ComposableArchitecture */,
+				3F0F6F8A2AFB82EB00B730C8 /* Kingfisher */,
+				3F0F6F8D2AFB831600B730C8 /* ServiceCore */,
+				3F0F6F902AFB833100B730C8 /* HTTPTransport */,
 			);
 			productName = TasksTCA;
 			productReference = 3F281A822AE98F9600C6417E /* TasksTCA.app */;
@@ -322,6 +378,9 @@
 			mainGroup = 3F281A792AE98F9600C6417E;
 			packageReferences = (
 				3FC93EF92AF0194B0081F411 /* XCRemoteSwiftPackageReference "TCA" */,
+				3F0F6F892AFB82EB00B730C8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				3F0F6F8C2AFB831600B730C8 /* XCRemoteSwiftPackageReference "service-core" */,
+				3F0F6F8F2AFB833100B730C8 /* XCRemoteSwiftPackageReference "http-transport" */,
 			);
 			productRefGroup = 3F281A832AE98F9600C6417E /* Products */;
 			projectDirPath = "";
@@ -353,6 +412,7 @@
 				3FAF70642AF3B9FE0033A7E5 /* InteractiveListItemView.swift in Sources */,
 				3F0273A32AEABE0400C24937 /* CounterAction.swift in Sources */,
 				3F281AA12AE9901100C6417E /* FibonacciCounterAction.swift in Sources */,
+				3F0F6F852AFB82B200B730C8 /* WebService.swift in Sources */,
 				3F6A1A272AED23B100CBC3E0 /* BindingsAction.swift in Sources */,
 				3F281A862AE98F9600C6417E /* TasksTCAApp.swift in Sources */,
 				3FAF705C2AF3B9C40033A7E5 /* InteractiveListView.swift in Sources */,
@@ -365,15 +425,19 @@
 				3FC93EFE2AF01ECC0081F411 /* MainView.swift in Sources */,
 				3FC93F022AF01EE30081F411 /* MainAction.swift in Sources */,
 				3F0273942AEAA60900C24937 /* DoubleCounterState.swift in Sources */,
+				3F0F6F7E2AFB826800B730C8 /* ArticleService.swift in Sources */,
 				3F0273A52AEABE0B00C24937 /* CounterReducer.swift in Sources */,
 				3F281A9F2AE9900800C6417E /* FibonacciCounterReducer.swift in Sources */,
 				3F0273962AEAA69400C24937 /* DoubleCounterAction.swift in Sources */,
 				3F0273A72AEAC67F00C24937 /* DoubleCounterView.swift in Sources */,
 				3F0273982AEAA70300C24937 /* DoubleCounterReducer.swift in Sources */,
 				3F281A9B2AE98FF400C6417E /* FibonacciCounterView.swift in Sources */,
+				3F0F6F832AFB829C00B730C8 /* Constants.swift in Sources */,
 				3F6A1A252AED23A900CBC3E0 /* BindingsState.swift in Sources */,
+				3F0F6F802AFB827900B730C8 /* ArticleServiceImplementation.swift in Sources */,
 				3FC93F042AF01EED0081F411 /* MainReducer.swift in Sources */,
 				3FC93F002AF01ED80081F411 /* MainState.swift in Sources */,
+				3F0F6F882AFB82C900B730C8 /* ArticlePlainObject.swift in Sources */,
 				3FAF70602AF3B9DA0033A7E5 /* InteractiveListAction.swift in Sources */,
 				3FAF706A2AF3BA210033A7E5 /* InteractiveListItemReducer.swift in Sources */,
 				3F91AAD22AE99A2700342273 /* Color.swift in Sources */,
@@ -583,6 +647,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3F0F6F892AFB82EB00B730C8 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		3F0F6F8C2AFB831600B730C8 /* XCRemoteSwiftPackageReference "service-core" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Incetro/service-core.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		3F0F6F8F2AFB833100B730C8 /* XCRemoteSwiftPackageReference "http-transport" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Incetro/http-transport.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		3FC93EF92AF0194B0081F411 /* XCRemoteSwiftPackageReference "TCA" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Incetro/TCA.git";
@@ -594,6 +682,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3F0F6F8A2AFB82EB00B730C8 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F0F6F892AFB82EB00B730C8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		3F0F6F8D2AFB831600B730C8 /* ServiceCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F0F6F8C2AFB831600B730C8 /* XCRemoteSwiftPackageReference "service-core" */;
+			productName = ServiceCore;
+		};
+		3F0F6F902AFB833100B730C8 /* HTTPTransport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F0F6F8F2AFB833100B730C8 /* XCRemoteSwiftPackageReference "http-transport" */;
+			productName = HTTPTransport;
+		};
 		3FC93EFA2AF0194B0081F411 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3FC93EF92AF0194B0081F411 /* XCRemoteSwiftPackageReference "TCA" */;
