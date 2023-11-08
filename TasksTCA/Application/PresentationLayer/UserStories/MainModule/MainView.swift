@@ -132,7 +132,46 @@ public struct MainView: View {
                         label: { EmptyView() }
                     )
                 )
+                .background(
+                    NavigationLink(
+                        isActive: viewStore.binding(
+                            get: \.isFirstSpaceNewsListActive,
+                            send: MainAction.setFirstSpaceNewsListActive
+                        ),
+                        destination: {
+                            IfLetStore(
+                                store.scope(
+                                    state: \.firstSpaceNewsList,
+                                    action: MainAction.firstSpaceNewsList
+                                ), then: { store in
+                                    SpaceNewsListView(store: store)
+                                }
+                            )
+                        },
+                        label: { EmptyView() }
+                    )
+                )
+                .background(
+                    NavigationLink(
+                        isActive: viewStore.binding(
+                            get: \.isSecondSpaceNewsListActive,
+                            send: MainAction.setSecondSpaceNewsListActive
+                        ),
+                        destination: {
+                            IfLetStore(
+                                store.scope(
+                                    state: \.secondSpaceNewsList,
+                                    action: MainAction.secondSpaceNewsList
+                                ), then: { store in
+                                    SpaceNewsListView(store: store)
+                                }
+                            )
+                        },
+                        label: { EmptyView() }
+                    )
+                )
             }
+            .navigationViewStyle(.stack)
         }
     }
     

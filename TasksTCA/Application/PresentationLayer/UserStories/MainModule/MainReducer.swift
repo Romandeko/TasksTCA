@@ -7,6 +7,7 @@
 
 import Foundation
 import ComposableArchitecture
+import HTTPTransport
 
 // MARK: - MainReducer
 
@@ -29,6 +30,10 @@ public struct MainReducer: Reducer {
                     return .send(.setBindingsActive(true))
                 case .interactiveList:
                     return .send(.setInteractiveListActive(true))
+                case .firstSpaceNewsList:
+                    return .send(.setFirstSpaceNewsListActive(true))
+                case .secondSpaceNewsList:
+                    return .send(.setSecondSpaceNewsListActive(true))
                 }
             case .setCounterActive(let isActive):
                 state.isCounterActive = isActive
@@ -45,6 +50,12 @@ public struct MainReducer: Reducer {
             case .setInteractiveListActive(let isActive):
                 state.isInteractiveListActive = isActive
                 state.modulesInfo[.interactiveList, default: 0] += isActive ? 1 : 0
+            case .setFirstSpaceNewsListActive(let isActive):
+                state.isFirstSpaceNewsListActive = isActive
+                state.modulesInfo[.firstSpaceNewsList, default: 0] += isActive ? 1 : 0
+            case .setSecondSpaceNewsListActive(let isActive):
+                state.isSecondSpaceNewsListActive = isActive
+                state.modulesInfo[.secondSpaceNewsList, default: 0] += isActive ? 1 : 0
             default:
                 return .none
             }
@@ -64,6 +75,20 @@ public struct MainReducer: Reducer {
         }
         .ifLet(\.interactiveList, action: /MainAction.interactiveList) {
             InteractiveListReducer()
+        }
+        .ifLet(\.firstSpaceNewsList, action: /MainAction.firstSpaceNewsList) {
+            SpaceNewsListReducer(
+                articlesService: ArticleServiceImplementation(
+                    transport: HTTPTransport()
+                )
+            )
+        }
+        .ifLet(\.secondSpaceNewsList, action: /MainAction.secondSpaceNewsList) {
+            SpaceNewsListReducer(
+                articlesService: ArticleServiceImplementation(
+                    transport: HTTPTransport()
+                )
+            )
         }
     }
 }

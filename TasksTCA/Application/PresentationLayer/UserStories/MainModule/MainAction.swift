@@ -32,6 +32,12 @@ public enum MainAction: Equatable {
     /// Actions of child module `InteractiveList`
     case interactiveList(InteractiveListAction)
     
+    /// Actions of child module `FirstSpaceNewsList`
+    case firstSpaceNewsList(SpaceNewsListAction)
+    
+    /// Actions of child module `SecondSpaceNewsList`
+    case secondSpaceNewsList(SpaceNewsListAction)
+    
     // MARK: - Navigation
     
     /// Setter for `isCounterActive` property binding
@@ -48,4 +54,10 @@ public enum MainAction: Equatable {
     
     /// Setter for `isInteractiveListActive'` property binding
     case setInteractiveListActive(Bool)
+    
+    /// Setter for `isFirstSpaceNewsListActive'` property binding
+    case setFirstSpaceNewsListActive(Bool)
+    
+    /// Setter for `isSecondSpaceNewsListActive'` property binding
+    case setSecondSpaceNewsListActive(Bool)
 }

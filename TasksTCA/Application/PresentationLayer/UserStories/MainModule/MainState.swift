@@ -22,6 +22,8 @@ public struct MainState: Equatable {
         case doubleCounter
         case bindings
         case interactiveList
+        case firstSpaceNewsList
+        case secondSpaceNewsList
         
         // MARK: - Useful
         
@@ -37,6 +39,10 @@ public struct MainState: Equatable {
                 return "Bindings"
             case .interactiveList:
                 return "Interactive list"
+            case .firstSpaceNewsList:
+                return "Space news #1"
+            case .secondSpaceNewsList:
+                return "Space news #2"
             }
         }
     }
@@ -66,6 +72,12 @@ public struct MainState: Equatable {
     /// An instance of `interactiveList`' submodule
     public var interactiveList: InteractiveListState? = InteractiveListState()
     
+    /// An instance of `spaceNewsList`' submodulec with instant transition
+    public var firstSpaceNewsList: SpaceNewsListState? = SpaceNewsListState(transitionType: .instant)
+    
+    /// An instance of `spaceNewsList`' submodule with deffered transition
+    public var secondSpaceNewsList: SpaceNewsListState? = SpaceNewsListState(transitionType: .deferred)
+    
     // MARK: - Navigation
     
     /// If counter module is active
@@ -82,6 +94,12 @@ public struct MainState: Equatable {
     
     /// If interactiveList module is active
     public var isInteractiveListActive = false
+    
+    /// If firstSpaceNewsList module is active
+    public var isFirstSpaceNewsListActive = false
+    
+    /// If secondSpaceNewsList module is active
+    public var isSecondSpaceNewsListActive = false
 }
 
 // MARK: - Text

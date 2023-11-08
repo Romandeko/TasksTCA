@@ -23,6 +23,18 @@
 		3F0F6F8B2AFB82EB00B730C8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3F0F6F8A2AFB82EB00B730C8 /* Kingfisher */; };
 		3F0F6F8E2AFB831600B730C8 /* ServiceCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3F0F6F8D2AFB831600B730C8 /* ServiceCore */; };
 		3F0F6F912AFB833100B730C8 /* HTTPTransport in Frameworks */ = {isa = PBXBuildFile; productRef = 3F0F6F902AFB833100B730C8 /* HTTPTransport */; };
+		3F0F6F962AFB85F600B730C8 /* SpaceNewsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6F952AFB85F600B730C8 /* SpaceNewsPageView.swift */; };
+		3F0F6F982AFB860600B730C8 /* SpaceNewsPageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6F972AFB860600B730C8 /* SpaceNewsPageState.swift */; };
+		3F0F6F9A2AFB862300B730C8 /* SpaceNewsPageAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6F992AFB862300B730C8 /* SpaceNewsPageAction.swift */; };
+		3F0F6F9C2AFB863500B730C8 /* SpaceNewsPageReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6F9B2AFB863500B730C8 /* SpaceNewsPageReducer.swift */; };
+		3F0F6F9F2AFB866600B730C8 /* SpaceNewsListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6F9E2AFB866600B730C8 /* SpaceNewsListItemView.swift */; };
+		3F0F6FA12AFB867A00B730C8 /* SpaceNewsListItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6FA02AFB867A00B730C8 /* SpaceNewsListItemState.swift */; };
+		3F0F6FA32AFB868000B730C8 /* SpaceNewsListItemAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6FA22AFB868000B730C8 /* SpaceNewsListItemAction.swift */; };
+		3F0F6FA52AFB868500B730C8 /* SpaceNewsListItemReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6FA42AFB868500B730C8 /* SpaceNewsListItemReducer.swift */; };
+		3F0F6FA72AFB86B800B730C8 /* SpaceNewsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6FA62AFB86B800B730C8 /* SpaceNewsListView.swift */; };
+		3F0F6FA92AFB86BF00B730C8 /* SpaceNewsListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6FA82AFB86BF00B730C8 /* SpaceNewsListState.swift */; };
+		3F0F6FAB2AFB86C500B730C8 /* SpaceNewsListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6FAA2AFB86C500B730C8 /* SpaceNewsListAction.swift */; };
+		3F0F6FAD2AFB86CB00B730C8 /* SpaceNewsListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F6FAC2AFB86CB00B730C8 /* SpaceNewsListReducer.swift */; };
 		3F281A862AE98F9600C6417E /* TasksTCAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F281A852AE98F9600C6417E /* TasksTCAApp.swift */; };
 		3F281A8A2AE98F9700C6417E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F281A892AE98F9700C6417E /* Assets.xcassets */; };
 		3F281A8D2AE98F9700C6417E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F281A8C2AE98F9700C6417E /* Preview Assets.xcassets */; };
@@ -64,6 +76,18 @@
 		3F0F6F822AFB829C00B730C8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3F0F6F842AFB82B200B730C8 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		3F0F6F872AFB82C900B730C8 /* ArticlePlainObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePlainObject.swift; sourceTree = "<group>"; };
+		3F0F6F952AFB85F600B730C8 /* SpaceNewsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNewsPageView.swift; sourceTree = "<group>"; };
+		3F0F6F972AFB860600B730C8 /* SpaceNewsPageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNewsPageState.swift; sourceTree = "<group>"; };
+		3F0F6F992AFB862300B730C8 /* SpaceNewsPageAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNewsPageAction.swift; sourceTree = "<group>"; };
+		3F0F6F9B2AFB863500B730C8 /* SpaceNewsPageReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNewsPageReducer.swift; sourceTree = "<group>"; };
+		3F0F6F9E2AFB866600B730C8 /* SpaceNewsListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNewsListItemView.swift; sourceTree = "<group>"; };
+		3F0F6FA02AFB867A00B730C8 /* SpaceNewsListItemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNewsListItemState.swift; sourceTree = "<group>"; };
+		3F0F6FA22AFB868000B730C8 /* SpaceNewsListItemAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNewsListItemAction.swift; sourceTree = "<group>"; };
+		3F0F6FA42AFB868500B730C8 /* SpaceNewsListItemReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNewsListItemReducer.swift; sourceTree = "<group>"; };
+		3F0F6FA62AFB86B800B730C8 /* SpaceNewsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNewsListView.swift; sourceTree = "<group>"; };
+		3F0F6FA82AFB86BF00B730C8 /* SpaceNewsListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNewsListState.swift; sourceTree = "<group>"; };
+		3F0F6FAA2AFB86C500B730C8 /* SpaceNewsListAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNewsListAction.swift; sourceTree = "<group>"; };
+		3F0F6FAC2AFB86CB00B730C8 /* SpaceNewsListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNewsListReducer.swift; sourceTree = "<group>"; };
 		3F281A822AE98F9600C6417E /* TasksTCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TasksTCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F281A852AE98F9600C6417E /* TasksTCAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTCAApp.swift; sourceTree = "<group>"; };
 		3F281A892AE98F9700C6417E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +141,7 @@
 		3F0273892AEA9DDE00C24937 /* UserStories */ = {
 			isa = PBXGroup;
 			children = (
+				3F0F6F922AFB85BC00B730C8 /* SpaceNews */,
 				3FC93EFC2AF01EB40081F411 /* MainModule */,
 				3F281A982AE98FE100C6417E /* Beginner */,
 			);
@@ -176,6 +201,49 @@
 				3F0F6F872AFB82C900B730C8 /* ArticlePlainObject.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3F0F6F922AFB85BC00B730C8 /* SpaceNews */ = {
+			isa = PBXGroup;
+			children = (
+				3F0F6F942AFB85E200B730C8 /* SpaceNewsList */,
+				3F0F6F932AFB85DC00B730C8 /* SpaceNewsPage */,
+			);
+			path = SpaceNews;
+			sourceTree = "<group>";
+		};
+		3F0F6F932AFB85DC00B730C8 /* SpaceNewsPage */ = {
+			isa = PBXGroup;
+			children = (
+				3F0F6F952AFB85F600B730C8 /* SpaceNewsPageView.swift */,
+				3F0F6F972AFB860600B730C8 /* SpaceNewsPageState.swift */,
+				3F0F6F992AFB862300B730C8 /* SpaceNewsPageAction.swift */,
+				3F0F6F9B2AFB863500B730C8 /* SpaceNewsPageReducer.swift */,
+			);
+			path = SpaceNewsPage;
+			sourceTree = "<group>";
+		};
+		3F0F6F942AFB85E200B730C8 /* SpaceNewsList */ = {
+			isa = PBXGroup;
+			children = (
+				3F0F6F9D2AFB864600B730C8 /* SpaceNewsListItem */,
+				3F0F6FA62AFB86B800B730C8 /* SpaceNewsListView.swift */,
+				3F0F6FA82AFB86BF00B730C8 /* SpaceNewsListState.swift */,
+				3F0F6FAA2AFB86C500B730C8 /* SpaceNewsListAction.swift */,
+				3F0F6FAC2AFB86CB00B730C8 /* SpaceNewsListReducer.swift */,
+			);
+			path = SpaceNewsList;
+			sourceTree = "<group>";
+		};
+		3F0F6F9D2AFB864600B730C8 /* SpaceNewsListItem */ = {
+			isa = PBXGroup;
+			children = (
+				3F0F6F9E2AFB866600B730C8 /* SpaceNewsListItemView.swift */,
+				3F0F6FA02AFB867A00B730C8 /* SpaceNewsListItemState.swift */,
+				3F0F6FA22AFB868000B730C8 /* SpaceNewsListItemAction.swift */,
+				3F0F6FA42AFB868500B730C8 /* SpaceNewsListItemReducer.swift */,
+			);
+			path = SpaceNewsListItem;
 			sourceTree = "<group>";
 		};
 		3F2814732AEFC0A3000B6F2E /* Application */ = {
@@ -410,20 +478,26 @@
 			files = (
 				3F6A1A232AED239500CBC3E0 /* BindingsView.swift in Sources */,
 				3FAF70642AF3B9FE0033A7E5 /* InteractiveListItemView.swift in Sources */,
+				3F0F6F9A2AFB862300B730C8 /* SpaceNewsPageAction.swift in Sources */,
 				3F0273A32AEABE0400C24937 /* CounterAction.swift in Sources */,
 				3F281AA12AE9901100C6417E /* FibonacciCounterAction.swift in Sources */,
 				3F0F6F852AFB82B200B730C8 /* WebService.swift in Sources */,
+				3F0F6FA32AFB868000B730C8 /* SpaceNewsListItemAction.swift in Sources */,
 				3F6A1A272AED23B100CBC3E0 /* BindingsAction.swift in Sources */,
 				3F281A862AE98F9600C6417E /* TasksTCAApp.swift in Sources */,
 				3FAF705C2AF3B9C40033A7E5 /* InteractiveListView.swift in Sources */,
+				3F0F6FA12AFB867A00B730C8 /* SpaceNewsListItemState.swift in Sources */,
+				3F0F6F982AFB860600B730C8 /* SpaceNewsPageState.swift in Sources */,
 				3FAF70662AF3BA0C0033A7E5 /* InteractiveListItemState.swift in Sources */,
 				3FAF70622AF3B9E60033A7E5 /* InteractiveListReducer.swift in Sources */,
 				3F0273A12AEABDE800C24937 /* CounterState.swift in Sources */,
 				3F6A1A292AED23BE00CBC3E0 /* BindingsReducer.swift in Sources */,
 				3FAF705E2AF3B9CD0033A7E5 /* InteractiveListState.swift in Sources */,
+				3F0F6FA92AFB86BF00B730C8 /* SpaceNewsListState.swift in Sources */,
 				3F281A9D2AE98FFF00C6417E /* FibonacciCounterState.swift in Sources */,
 				3FC93EFE2AF01ECC0081F411 /* MainView.swift in Sources */,
 				3FC93F022AF01EE30081F411 /* MainAction.swift in Sources */,
+				3F0F6F9F2AFB866600B730C8 /* SpaceNewsListItemView.swift in Sources */,
 				3F0273942AEAA60900C24937 /* DoubleCounterState.swift in Sources */,
 				3F0F6F7E2AFB826800B730C8 /* ArticleService.swift in Sources */,
 				3F0273A52AEABE0B00C24937 /* CounterReducer.swift in Sources */,
@@ -431,17 +505,23 @@
 				3F0273962AEAA69400C24937 /* DoubleCounterAction.swift in Sources */,
 				3F0273A72AEAC67F00C24937 /* DoubleCounterView.swift in Sources */,
 				3F0273982AEAA70300C24937 /* DoubleCounterReducer.swift in Sources */,
+				3F0F6F9C2AFB863500B730C8 /* SpaceNewsPageReducer.swift in Sources */,
 				3F281A9B2AE98FF400C6417E /* FibonacciCounterView.swift in Sources */,
 				3F0F6F832AFB829C00B730C8 /* Constants.swift in Sources */,
+				3F0F6FA52AFB868500B730C8 /* SpaceNewsListItemReducer.swift in Sources */,
 				3F6A1A252AED23A900CBC3E0 /* BindingsState.swift in Sources */,
 				3F0F6F802AFB827900B730C8 /* ArticleServiceImplementation.swift in Sources */,
+				3F0F6F962AFB85F600B730C8 /* SpaceNewsPageView.swift in Sources */,
 				3FC93F042AF01EED0081F411 /* MainReducer.swift in Sources */,
+				3F0F6FAB2AFB86C500B730C8 /* SpaceNewsListAction.swift in Sources */,
 				3FC93F002AF01ED80081F411 /* MainState.swift in Sources */,
 				3F0F6F882AFB82C900B730C8 /* ArticlePlainObject.swift in Sources */,
+				3F0F6FAD2AFB86CB00B730C8 /* SpaceNewsListReducer.swift in Sources */,
 				3FAF70602AF3B9DA0033A7E5 /* InteractiveListAction.swift in Sources */,
 				3FAF706A2AF3BA210033A7E5 /* InteractiveListItemReducer.swift in Sources */,
 				3F91AAD22AE99A2700342273 /* Color.swift in Sources */,
 				3F02739F2AEABDDB00C24937 /* CounterView.swift in Sources */,
+				3F0F6FA72AFB86B800B730C8 /* SpaceNewsListView.swift in Sources */,
 				3FAF70682AF3BA160033A7E5 /* InteractiveListItemAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
