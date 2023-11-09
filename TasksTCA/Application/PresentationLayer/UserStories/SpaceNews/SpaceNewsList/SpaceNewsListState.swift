@@ -26,7 +26,10 @@ public struct SpaceNewsListState: Equatable {
     // MARK: - Properties
     
     /// Current type of transition
-    public var transitionType: Transiton
+    public let transitionType: Transiton
+    
+    /// If loader is active
+    public var isLoaderActive = true
     
     // MARK: - Children
     

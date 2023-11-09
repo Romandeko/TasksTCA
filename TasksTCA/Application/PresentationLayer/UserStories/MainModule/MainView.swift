@@ -24,19 +24,30 @@ public struct MainView: View {
             NavigationView {
                 List {
                     Section(header: Text("👶🏿 Beginner")) {
-                        ForEach(viewStore.moduleTypes, id: \.self) { moduleType in
+                        ForEach(viewStore.beginnerModuleTypes, id: \.self) { moduleType in
                             ModuleItemView (
                                 title: moduleType.title,
-                                subtitle: viewStore.moduleItemInfoText(moduleType),
+                                subtitle: viewStore.beginnerModuleItemInfoText(moduleType),
                                 onTapAction: {
-                                    viewStore.send(.onModuleItemTap(moduleType))
+                                    viewStore.send(.onBeginnerModuleItemTap(moduleType))
                                 }
                             )
                         }
                     }
-                    .font(.system(size: 17))
-                    .foregroundColor(.black)
+                    Section(header: Text("🧑🏾 Intermediate")) {
+                        ForEach(viewStore.intermediateModuleTypes, id: \.self) { moduleType in
+                            ModuleItemView (
+                                title: moduleType.title,
+                                subtitle: viewStore.intermediateModuleItemInfoText(moduleType),
+                                onTapAction: {
+                                    viewStore.send(.onIntermediateModuleItemTap(moduleType))
+                                }
+                            )
+                        }
+                    }
                 }
+                .font(.system(size: 17))
+                .foregroundColor(.black)
                 .background(
                     NavigationLink(
                         isActive: viewStore.binding(
@@ -232,4 +243,3 @@ struct NavigationModuleView_Previews: PreviewProvider {
         )
     }
 }
-

@@ -18,7 +18,7 @@ public struct MainReducer: Reducer {
     public var body: some Reducer<MainState, MainAction> {
         Reduce { state, action in
             switch action {
-            case .onModuleItemTap(let moduleType):
+            case .onBeginnerModuleItemTap(let moduleType):
                 switch moduleType {
                 case .counter:
                     return .send(.setCounterActive(true))
@@ -28,6 +28,9 @@ public struct MainReducer: Reducer {
                     return .send(.setDoubleCounterActive(true))
                 case .bindings:
                     return .send(.setBindingsActive(true))
+                }
+            case .onIntermediateModuleItemTap(let moduleType):
+                switch moduleType {
                 case .interactiveList:
                     return .send(.setInteractiveListActive(true))
                 case .firstSpaceNewsList:
@@ -36,26 +39,33 @@ public struct MainReducer: Reducer {
                     return .send(.setSecondSpaceNewsListActive(true))
                 }
             case .setCounterActive(let isActive):
+                state.counter = isActive ? CounterState() : nil
                 state.isCounterActive = isActive
-                state.modulesInfo[.counter, default: 0] += isActive ? 1 : 0
+                state.beginnerModulesInfo[.counter, default: 0] += isActive ? 1 : 0
             case .setFiboCounterActive(let isActive):
+                state.fiboCounter = isActive ? FibonacciCounterState() : nil
                 state.isFiboCounterActive = isActive
-                state.modulesInfo[.fiboCounter, default: 0] += isActive ? 1 : 0
+                state.beginnerModulesInfo[.fiboCounter, default: 0] += isActive ? 1 : 0
             case .setDoubleCounterActive(let isActive):
+                state.doubleCounter = isActive ? DoubleCounterState() : nil
                 state.isDoubleCounterActive = isActive
-                state.modulesInfo[.doubleCounter, default: 0] += isActive ? 1 : 0
+                state.beginnerModulesInfo[.doubleCounter, default: 0] += isActive ? 1 : 0
             case .setBindingsActive(let isActive):
+                state.bindings = isActive ? BindingsState() : nil
                 state.isBindingsActive = isActive
-                state.modulesInfo[.bindings, default: 0] += isActive ? 1 : 0
+                state.beginnerModulesInfo[.bindings, default: 0] += isActive ? 1 : 0
             case .setInteractiveListActive(let isActive):
+                state.interactiveList = isActive ? InteractiveListState() : nil
                 state.isInteractiveListActive = isActive
-                state.modulesInfo[.interactiveList, default: 0] += isActive ? 1 : 0
+                state.intermediateModulesInfo[.interactiveList, default: 0] += isActive ? 1 : 0
             case .setFirstSpaceNewsListActive(let isActive):
+                state.firstSpaceNewsList = isActive ? SpaceNewsListState(transitionType: .instant) : nil
                 state.isFirstSpaceNewsListActive = isActive
-                state.modulesInfo[.firstSpaceNewsList, default: 0] += isActive ? 1 : 0
+                state.intermediateModulesInfo[.firstSpaceNewsList, default: 0] += isActive ? 1 : 0
             case .setSecondSpaceNewsListActive(let isActive):
+                state.secondSpaceNewsList = isActive ? SpaceNewsListState(transitionType: .deferred) : nil
                 state.isSecondSpaceNewsListActive = isActive
-                state.modulesInfo[.secondSpaceNewsList, default: 0] += isActive ? 1 : 0
+                state.intermediateModulesInfo[.secondSpaceNewsList, default: 0] += isActive ? 1 : 0
             default:
                 return .none
             }

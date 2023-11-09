@@ -9,7 +9,18 @@ import Foundation
 
 // MARK: - SpaceNewsPageState
 
-public struct SpaceNewsPageState: Equatable {
+public struct SpaceNewsPageState: Equatable, Identifiable {
+    
+    // MARK: - Transition
+    
+    /// Types of transition
+    public enum Transiton {
+        
+        // MARK: - Cases
+        
+        case deferred
+        case instant
+    }
     
     // MARK: - Properties
     
@@ -34,14 +45,18 @@ public struct SpaceNewsPageState: Equatable {
     /// If loader is active
     public var isLoaderActive: Bool
     
+    /// Current type of transition
+    public let transitionType: Transiton
+    
     // MARK: - Initializers
     
-    public init(id: Int) {
+    public init(id: ID) {
         self.id = id
         self.title = ""
         self.imageURL = nil
         self.summary = ""
         self.newsSite = ""
+        self.transitionType = .instant
         self.isLoaderActive = true
     }
     
@@ -51,6 +66,7 @@ public struct SpaceNewsPageState: Equatable {
         self.imageURL = article.imageURL
         self.summary = article.summary
         self.newsSite = article.newsSite
+        self.transitionType = .deferred
         self.isLoaderActive = false
     }
 }

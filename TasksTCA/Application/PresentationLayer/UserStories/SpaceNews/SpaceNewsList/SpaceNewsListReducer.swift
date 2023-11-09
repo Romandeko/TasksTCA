@@ -37,6 +37,7 @@ public struct SpaceNewsListReducer: Reducer {
                     .catchToEffect(SpaceNewsListAction.articlesService)
             case .articlesService(.success(.articlesObtained(let articles))):
                 state.items = IdentifiedArray(uniqueElements: articles.map(SpaceNewsListItemState.init))
+                state.isLoaderActive = false
             case .item(let id, action: .itemTapped):
                 switch state.transitionType {
                 case .deferred:

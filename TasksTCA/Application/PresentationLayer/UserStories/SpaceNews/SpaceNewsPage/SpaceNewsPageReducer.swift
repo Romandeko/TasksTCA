@@ -29,14 +29,16 @@ public struct SpaceNewsPageReducer: Reducer {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                if state.isLoaderActive {
+                switch state.transitionType {
+                case .instant:
                     return articlesService
                         .obtainArticle(withId: state.id)
                         .publish()
                         .map(ArticleServiceAction.articleWithIdObtained)
                         .catchToEffect(SpaceNewsPageAction.articlesService)
+                case .deferred:
+                    return .none
                 }
-                return .none
             case .articlesService(.success(.articleWithIdObtained(let article))):
                 state.title = article.title
                 state.newsSite = article.newsSite

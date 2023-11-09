@@ -15,68 +15,98 @@ public struct MainState: Equatable {
     
     public enum ModuleType: Equatable, CaseIterable {
         
-        // MARK: - Cases
+        // MARK: - BeginnerModules
         
-        case counter
-        case fiboCounter
-        case doubleCounter
-        case bindings
-        case interactiveList
-        case firstSpaceNewsList
-        case secondSpaceNewsList
+        public enum BeginnerModules: Equatable, CaseIterable {
+            
+            // MARK: - Cases
+            
+            case counter
+            case fiboCounter
+            case doubleCounter
+            case bindings
+            
+            // MARK: - Useful
+            
+            public var title: String {
+                switch self {
+                case .counter:
+                    return "Counter"
+                case .fiboCounter:
+                    return "Fibonacci counter"
+                case .doubleCounter:
+                    return "Double counter"
+                case .bindings:
+                    return "Bindings"
+                }
+            }
+        }
+       
+        // MARK: - IntermediateModules
         
-        // MARK: - Useful
-        
-        public var title: String {
-            switch self {
-            case .counter:
-                return "Counter"
-            case .fiboCounter:
-                return "Fibonacci counter"
-            case .doubleCounter:
-                return "Double counter"
-            case .bindings:
-                return "Bindings"
-            case .interactiveList:
-                return "Interactive list"
-            case .firstSpaceNewsList:
-                return "Space news #1"
-            case .secondSpaceNewsList:
-                return "Space news #2"
+        public enum IntermediateModules: Equatable, CaseIterable {
+            
+            // MARK: - Cases
+            
+            case interactiveList
+            case firstSpaceNewsList
+            case secondSpaceNewsList
+            
+            // MARK: - Useful
+            
+            public var title: String {
+                switch self {
+                case .interactiveList:
+                    return "Interactive list"
+                case .firstSpaceNewsList:
+                    return "News with instant transition"
+                case .secondSpaceNewsList:
+                    return "News with deffered transition"
+                }
             }
         }
     }
     
     // MARK: - Properties
     
-    /// Array of all modules
-    public let moduleTypes = ModuleType.allCases
+    /// Array of all  beginnermodules
+    public let beginnerModuleTypes = ModuleType.BeginnerModules.allCases
     
-    /// How many each module was appeared dictionary
-    public var modulesInfo = [ModuleType:Int](uniqueKeysWithValues: ModuleType.allCases.map { ($0, 0) } )
+    /// Array of all  intermediate modules
+    public let intermediateModuleTypes = ModuleType.IntermediateModules.allCases
+    
+    /// How many each beginner module was appeared dictionary
+    public var beginnerModulesInfo = [ModuleType.BeginnerModules:Int](
+        uniqueKeysWithValues: ModuleType.BeginnerModules.allCases.map { ($0, 0) }
+    )
+
+    /// How many each intermediate module was appeared dictionary
+    public var intermediateModulesInfo = [ModuleType.IntermediateModules:Int](
+        uniqueKeysWithValues: ModuleType.IntermediateModules.allCases.map { ($0, 0) }
+    )
     
     // MARK: - Children
     
     /// An instance of `counter` submodule
-    public var counter: CounterState? = CounterState()
+    public var counter: CounterState? 
     
     /// An instance of `fibonacciCounter` submodule
-    public var fiboCounter: FibonacciCounterState? = FibonacciCounterState()
+    public var fiboCounter: FibonacciCounterState?
     
     /// An instance of `doubleCounter` submodule
-    public var doubleCounter: DoubleCounterState? = DoubleCounterState()
+    public var doubleCounter: DoubleCounterState?
     
     /// An instance of `bindings`' submodule
-    public var bindings: BindingsState? = BindingsState()
+    public var bindings: BindingsState?
     
     /// An instance of `interactiveList`' submodule
-    public var interactiveList: InteractiveListState? = InteractiveListState()
+    public var interactiveList: InteractiveListState?
     
     /// An instance of `spaceNewsList`' submodulec with instant transition
-    public var firstSpaceNewsList: SpaceNewsListState? = SpaceNewsListState(transitionType: .instant)
+    public var firstSpaceNewsList: SpaceNewsListState?
     
     /// An instance of `spaceNewsList`' submodule with deffered transition
-    public var secondSpaceNewsList: SpaceNewsListState? = SpaceNewsListState(transitionType: .deferred)
+    public var secondSpaceNewsList: SpaceNewsListState?
     
     // MARK: - Navigation
     
@@ -106,10 +136,18 @@ public struct MainState: Equatable {
 
 extension MainState {
     
-    public var moduleItemInfoText: (ModuleType) -> String {
+    public var beginnerModuleItemInfoText: (ModuleType.BeginnerModules) -> String {
         { moduleType in
-            let count = modulesInfo[moduleType, default: 0]
+            let count = beginnerModulesInfo[moduleType, default: 0]
+            return count == 0 ? "" : "Appearances count: \(count)"
+        }
+    }
+    
+    public var intermediateModuleItemInfoText: (ModuleType.IntermediateModules) -> String {
+        { moduleType in
+            let count = intermediateModulesInfo[moduleType, default: 0]
             return count == 0 ? "" : "Appearances count: \(count)"
         }
     }
 }
+
