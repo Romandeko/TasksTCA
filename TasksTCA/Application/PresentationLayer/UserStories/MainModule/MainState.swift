@@ -14,75 +14,55 @@ public struct MainState: Equatable {
     // MARK: - ModuleType
     
     public enum ModuleType: Equatable, CaseIterable {
+        public static var allCases: [MainState.ModuleType] {
+            [.beginner(.counter)]
+        }
         
-        // MARK: - BeginnerModules
+        // MARK: - Cases
         
-        public enum BeginnerModules: Equatable, CaseIterable {
+        case beginner(Beginner)
+        case intermediate(Intermediate)
+        
+        // MARK: - Beginner
+        
+        public enum Beginner: String, Equatable, CaseIterable {
             
             // MARK: - Cases
             
-            case counter
-            case fiboCounter
-            case doubleCounter
-            case bindings
-            
-            // MARK: - Useful
-            
-            public var title: String {
-                switch self {
-                case .counter:
-                    return "Counter"
-                case .fiboCounter:
-                    return "Fibonacci counter"
-                case .doubleCounter:
-                    return "Double counter"
-                case .bindings:
-                    return "Bindings"
-                }
-            }
+            case counter = "Counter"
+            case fiboCounter = "Fibonacci counter"
+            case doubleCounter = "Double counter"
+            case bindings = "Bindings"
         }
        
-        // MARK: - IntermediateModules
+        // MARK: - Intermediate
         
-        public enum IntermediateModules: Equatable, CaseIterable {
+        public enum Intermediate: String, Equatable, CaseIterable {
             
             // MARK: - Cases
             
-            case interactiveList
-            case firstSpaceNewsList
-            case secondSpaceNewsList
-            
-            // MARK: - Useful
-            
-            public var title: String {
-                switch self {
-                case .interactiveList:
-                    return "Interactive list"
-                case .firstSpaceNewsList:
-                    return "News with instant transition"
-                case .secondSpaceNewsList:
-                    return "News with deffered transition"
-                }
-            }
+            case interactiveList = "Interactive list"
+            case firstSpaceNewsList = "News with instant transition"
+            case secondSpaceNewsList = "News with deffered transition"
         }
     }
     
     // MARK: - Properties
     
     /// Array of all  beginnermodules
-    public let beginnerModuleTypes = ModuleType.BeginnerModules.allCases
+    public let beginnerModuleTypes = ModuleType.Beginner.allCases
     
     /// Array of all  intermediate modules
-    public let intermediateModuleTypes = ModuleType.IntermediateModules.allCases
+    public let intermediateModuleTypes = ModuleType.Intermediate.allCases
     
     /// How many each beginner module was appeared dictionary
-    public var beginnerModulesInfo = [ModuleType.BeginnerModules:Int](
-        uniqueKeysWithValues: ModuleType.BeginnerModules.allCases.map { ($0, 0) }
+    public var beginnerModulesInfo = [ModuleType.Beginner:Int](
+        uniqueKeysWithValues: ModuleType.Beginner.allCases.map { ($0, 0) }
     )
 
     /// How many each intermediate module was appeared dictionary
-    public var intermediateModulesInfo = [ModuleType.IntermediateModules:Int](
-        uniqueKeysWithValues: ModuleType.IntermediateModules.allCases.map { ($0, 0) }
+    public var intermediateModulesInfo = [ModuleType.Intermediate:Int](
+        uniqueKeysWithValues: ModuleType.Intermediate.allCases.map { ($0, 0) }
     )
     
     // MARK: - Children
@@ -136,17 +116,17 @@ public struct MainState: Equatable {
 
 extension MainState {
     
-    public var beginnerModuleItemInfoText: (ModuleType.BeginnerModules) -> String {
+    public var beginnerModuleItemInfoText: (ModuleType.Beginner) -> String {
         { moduleType in
             let count = beginnerModulesInfo[moduleType, default: 0]
-            return count == 0 ? "" : "Appearances count: \(count)"
+            return count == 0 ? "" : "\(count)"
         }
     }
     
-    public var intermediateModuleItemInfoText: (ModuleType.IntermediateModules) -> String {
+    public var intermediateModuleItemInfoText: (ModuleType.Intermediate) -> String {
         { moduleType in
             let count = intermediateModulesInfo[moduleType, default: 0]
-            return count == 0 ? "" : "Appearances count: \(count)"
+            return count == 0 ? "" : "\(count)"
         }
     }
 }

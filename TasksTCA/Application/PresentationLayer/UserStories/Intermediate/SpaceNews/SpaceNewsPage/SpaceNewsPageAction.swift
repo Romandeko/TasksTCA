@@ -19,7 +19,7 @@ public enum SpaceNewsPageAction: Equatable {
     /// Setter for `isArticleAddedToFavourite` property binding
     case addToFavourite
     
-    // MARK: -  Services
+    // MARK: - Services
     
     /// Action for `ArticlesService` business logic
     case articlesService(Result<ArticleServiceAction, ArticleServiceError>)

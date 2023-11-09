@@ -26,7 +26,7 @@ public struct MainView: View {
                     Section(header: Text("👶🏿 Beginner")) {
                         ForEach(viewStore.beginnerModuleTypes, id: \.self) { moduleType in
                             ModuleItemView (
-                                title: moduleType.title,
+                                title: moduleType.rawValue,
                                 subtitle: viewStore.beginnerModuleItemInfoText(moduleType),
                                 onTapAction: {
                                     viewStore.send(.onBeginnerModuleItemTap(moduleType))
@@ -37,7 +37,7 @@ public struct MainView: View {
                     Section(header: Text("🧑🏾 Intermediate")) {
                         ForEach(viewStore.intermediateModuleTypes, id: \.self) { moduleType in
                             ModuleItemView (
-                                title: moduleType.title,
+                                title: moduleType.rawValue,
                                 subtitle: viewStore.intermediateModuleItemInfoText(moduleType),
                                 onTapAction: {
                                     viewStore.send(.onIntermediateModuleItemTap(moduleType))
@@ -216,7 +216,7 @@ public struct MainView: View {
         // MARK: - View
         
         var body: some View  {
-            HStack(spacing: 0) {
+            HStack(spacing: 5) {
                 Button {
                     onTapAction()
                 } label: {

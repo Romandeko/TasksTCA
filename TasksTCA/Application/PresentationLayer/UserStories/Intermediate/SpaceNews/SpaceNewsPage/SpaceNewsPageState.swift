@@ -13,13 +13,13 @@ public struct SpaceNewsPageState: Equatable, Identifiable {
     
     // MARK: - Transition
     
-    /// Types of transition
-    public enum Transiton {
+    /// Types of page
+    public enum PageType {
         
         // MARK: - Cases
         
-        case deferred
-        case instant
+        case withRequest
+        case withoutRequest
     }
     
     // MARK: - Properties
@@ -45,8 +45,8 @@ public struct SpaceNewsPageState: Equatable, Identifiable {
     /// If loader is active
     public var isLoaderActive: Bool
     
-    /// Current type of transition
-    public let transitionType: Transiton
+    /// Current type of page
+    public let pageType: PageType
     
     // MARK: - Initializers
     
@@ -56,7 +56,7 @@ public struct SpaceNewsPageState: Equatable, Identifiable {
         self.imageURL = nil
         self.summary = ""
         self.newsSite = ""
-        self.transitionType = .instant
+        self.pageType = .withRequest
         self.isLoaderActive = true
     }
     
@@ -66,7 +66,7 @@ public struct SpaceNewsPageState: Equatable, Identifiable {
         self.imageURL = article.imageURL
         self.summary = article.summary
         self.newsSite = article.newsSite
-        self.transitionType = .deferred
+        self.pageType = .withoutRequest
         self.isLoaderActive = false
     }
 }

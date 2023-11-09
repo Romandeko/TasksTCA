@@ -14,10 +14,10 @@ public enum MainAction: Equatable {
     // MARK: - General
     
     /// Actions for all beginner modules
-    case onBeginnerModuleItemTap(MainState.ModuleType.BeginnerModules)
+    case onBeginnerModuleItemTap(MainState.ModuleType.Beginner)
     
     /// Actions for all intermediate modules
-    case onIntermediateModuleItemTap(MainState.ModuleType.IntermediateModules)
+    case onIntermediateModuleItemTap(MainState.ModuleType.Intermediate)
     
     // MARK: - Children
     
