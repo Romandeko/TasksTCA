@@ -13,9 +13,9 @@ public struct MainState: Equatable {
     
     // MARK: - ModuleType
     
-    public enum ModuleType: Equatable, CaseIterable {
+    public enum ModuleType: Equatable, CaseIterable, Hashable {
         public static var allCases: [MainState.ModuleType] {
-            [.beginner(.counter)]
+            Beginner.allCases.map{.beginner($0)} + Intermediate.allCases.map{.intermediate($0)}
         }
         
         // MARK: - Cases
@@ -49,20 +49,12 @@ public struct MainState: Equatable {
     
     // MARK: - Properties
     
-    /// Array of all  beginnermodules
-    public let beginnerModuleTypes = ModuleType.Beginner.allCases
-    
-    /// Array of all  intermediate modules
-    public let intermediateModuleTypes = ModuleType.Intermediate.allCases
+    /// Array of all  modules
+    public let beginnerModuleTypes = ModuleType.Beginner.allCases.map{$0}
     
     /// How many each beginner module was appeared dictionary
-    public var beginnerModulesInfo = [ModuleType.Beginner:Int](
-        uniqueKeysWithValues: ModuleType.Beginner.allCases.map { ($0, 0) }
-    )
-
-    /// How many each intermediate module was appeared dictionary
-    public var intermediateModulesInfo = [ModuleType.Intermediate:Int](
-        uniqueKeysWithValues: ModuleType.Intermediate.allCases.map { ($0, 0) }
+    public var modulesInfo = [ModuleType:Int](
+        uniqueKeysWithValues: ModuleType.allCases.map { ($0, 0) }
     )
     
     // MARK: - Children
@@ -116,16 +108,9 @@ public struct MainState: Equatable {
 
 extension MainState {
     
-    public var beginnerModuleItemInfoText: (ModuleType.Beginner) -> String {
+    public var moduleItemInfoText: (ModuleType) -> String {
         { moduleType in
-            let count = beginnerModulesInfo[moduleType, default: 0]
-            return count == 0 ? "" : "\(count)"
-        }
-    }
-    
-    public var intermediateModuleItemInfoText: (ModuleType.Intermediate) -> String {
-        { moduleType in
-            let count = intermediateModulesInfo[moduleType, default: 0]
+            let count = modulesInfo[moduleType, default: 0]
             return count == 0 ? "" : "\(count)"
         }
     }

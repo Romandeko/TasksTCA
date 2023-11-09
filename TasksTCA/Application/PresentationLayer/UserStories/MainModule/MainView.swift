@@ -27,14 +27,15 @@ public struct MainView: View {
                         ForEach(viewStore.beginnerModuleTypes, id: \.self) { moduleType in
                             ModuleItemView (
                                 title: moduleType.rawValue,
-                                subtitle: viewStore.beginnerModuleItemInfoText(moduleType),
+                                subtitle: viewStore.moduleItemInfoText(moduleType),
                                 onTapAction: {
-                                    viewStore.send(.onBeginnerModuleItemTap(moduleType))
+                                    print(moduleType.rawValue)
+                                    viewStore.send(.onModuleItemTap(moduleType))
                                 }
                             )
                         }
                     }
-                    Section(header: Text("🧑🏾 Intermediate")) {
+                /*    Section(header: Text("🧑🏾 Intermediate")) {
                         ForEach(viewStore.intermediateModuleTypes, id: \.self) { moduleType in
                             ModuleItemView (
                                 title: moduleType.rawValue,
@@ -44,7 +45,7 @@ public struct MainView: View {
                                 }
                             )
                         }
-                    }
+                    }*/
                 }
                 .font(.system(size: 17))
                 .foregroundColor(.black)
