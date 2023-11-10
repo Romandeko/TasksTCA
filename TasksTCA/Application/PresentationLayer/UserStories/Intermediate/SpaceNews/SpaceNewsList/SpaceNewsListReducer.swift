@@ -43,7 +43,6 @@ public struct SpaceNewsListReducer: Reducer {
             case .articlesService(.success(.articlesObtained(let articles))):
                 state.items = IdentifiedArray(uniqueElements: articles.map(SpaceNewsListItemState.init))
                 state.isLoaderActive = false
-                state.alert = nil
             case .articlesService(.failure(_)):
                 if let tappedItemId = state.tappedItemID {
                     state.items[id: tappedItemId]?.isLoaderActive = false
@@ -69,7 +68,10 @@ public struct SpaceNewsListReducer: Reducer {
                         message: TextState("Try again?"),
                         buttons: [
                             .cancel(.init("No"),action: .send(.noButtonTapped)),
-                            .default(.init("Yes"), action: .send(.obtainArticles))
+                            .default(
+                                .init("Yes"),
+                                action: .send(.obtainArticles)
+                            )
                         ]
                     )
                 }
@@ -89,12 +91,13 @@ public struct SpaceNewsListReducer: Reducer {
                 }
             case .articlesService(.success(.articleWithIdObtained(let article))):
                 state.tappedItemID = nil
-                state.alert = nil
                 state.newsPage = SpaceNewsPageState(article: article)
                 state.items[id: article.id]?.isLoaderActive = false
                 return .send(.setNewsPageActive(true))
             case .setNewsPageActive(let value):
                 state.isNewsPageActive = value
+            case .dismissAlert:
+                state.alert = nil
             case .newsPage(.noButtonTapped):
                 return .send(.setNewsPageActive(false))
             default:
@@ -108,6 +111,5 @@ public struct SpaceNewsListReducer: Reducer {
         .ifLet(\.newsPage, action: /SpaceNewsListAction.newsPage) {
             SpaceNewsPageReducer(articlesService: articlesService)
         }
-        ._printChanges()
     }
 }
