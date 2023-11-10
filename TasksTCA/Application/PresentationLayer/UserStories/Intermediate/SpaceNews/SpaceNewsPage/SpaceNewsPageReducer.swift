@@ -31,20 +31,31 @@ public struct SpaceNewsPageReducer: Reducer {
             case .onAppear:
                 switch state.pageType {
                 case .withRequest:
-                    return articlesService
-                        .obtainArticle(withId: state.id)
-                        .publish()
-                        .map(ArticleServiceAction.articleWithIdObtained)
-                        .catchToEffect(SpaceNewsPageAction.articlesService)
+                    return .send(.obtainArticle)
                 case .withoutRequest:
                     return .none
                 }
+            case .obtainArticle:
+                return articlesService
+                    .obtainArticle(withId: state.id)
+                    .publish()
+                    .map(ArticleServiceAction.articleWithIdObtained)
+                    .catchToEffect(SpaceNewsPageAction.articlesService)
             case .articlesService(.success(.articleWithIdObtained(let article))):
                 state.title = article.title
                 state.newsSite = article.newsSite
                 state.summary = article.summary
                 state.imageURL = article.imageURL
                 state.isLoaderActive = false
+            case .articlesService(.failure(_)):
+                state.alert = AlertState(
+                    title: TextState("Error"),
+                    message: TextState("Try again?"),
+                    buttons: [
+                        .cancel(.init("No"),action: .send(.noButtonTapped)),
+                        .default(.init("Yes"), action: .send(.obtainArticle))
+                    ]
+                )
             case .addToFavourite:
                 state.isArticleAddedToFavourite.toggle()
             default:

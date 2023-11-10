@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ComposableArchitecture
 
 // MARK: - SpaceNewsPageState
 
@@ -47,6 +48,9 @@ public struct SpaceNewsPageState: Equatable, Identifiable {
     
     /// Current type of page
     public let pageType: PageType
+    
+    /// Currenty displaying alert
+    public var alert: AlertState<SpaceNewsPageAction>?
     
     // MARK: - Initializers
     

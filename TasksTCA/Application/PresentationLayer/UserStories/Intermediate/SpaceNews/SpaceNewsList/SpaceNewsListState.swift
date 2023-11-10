@@ -31,6 +31,15 @@ public struct SpaceNewsListState: Equatable {
     /// If loader is active
     public var isLoaderActive = true
     
+    /// If current module is presented
+    public var isModulePresented = true
+    
+    /// Currenty displaying alert
+    public var alert: AlertState<SpaceNewsListAction>?
+    
+    /// ID of tapped item
+    public var tappedItemID: Int?
+    
     // MARK: - Children
     
     /// Array of identified items

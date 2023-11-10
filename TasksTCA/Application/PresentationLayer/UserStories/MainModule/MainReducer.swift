@@ -66,6 +66,10 @@ public struct MainReducer: Reducer {
                 state.secondSpaceNewsList = isActive ? SpaceNewsListState(transitionType: .deferred) : nil
                 state.isSecondSpaceNewsListActive = isActive
                 state.intermediateModulesInfo[.secondSpaceNewsList, default: 0] += isActive ? 1 : 0
+            case .firstSpaceNewsList(.noButtonTapped):
+                return.send(.setFirstSpaceNewsListActive(false))
+            case .secondSpaceNewsList(.noButtonTapped):
+                return.send(.setSecondSpaceNewsListActive(false))
             default:
                 return .none
             }

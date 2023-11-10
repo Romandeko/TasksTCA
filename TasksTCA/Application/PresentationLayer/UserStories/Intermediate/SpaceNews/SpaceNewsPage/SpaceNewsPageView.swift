@@ -57,6 +57,10 @@ public struct SpaceNewsPageView: View {
                     .onAppear {
                         viewStore.send(.onAppear)
                     }
+                    .alert(
+                        store.scope(state: \.alert),
+                        dismiss: .dismissButtonTapped
+                    )
             }
         }
     }

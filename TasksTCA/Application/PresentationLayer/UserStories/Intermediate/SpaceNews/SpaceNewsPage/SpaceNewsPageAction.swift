@@ -19,6 +19,15 @@ public enum SpaceNewsPageAction: Equatable {
     /// Setter for `isArticleAddedToFavourite` property binding
     case addToFavourite
     
+    /// Dismiss the alert
+    case dismissButtonTapped
+    
+    /// Dismisses the view
+    case noButtonTapped
+    
+    /// Make obtain article with id reques
+    case obtainArticle
+    
     // MARK: - Services
     
     /// Action for `ArticlesService` business logic

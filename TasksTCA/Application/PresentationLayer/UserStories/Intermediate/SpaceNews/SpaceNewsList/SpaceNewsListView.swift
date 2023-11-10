@@ -23,44 +23,48 @@ public struct SpaceNewsListView: View {
     
     public var body: some View {
         WithViewStore(store) { viewStore in
-            if !viewStore.state.isLoaderActive {
-                List {
-                    ForEachStore(
-                        store.scope(
-                            state: \.items,
-                            action: SpaceNewsListAction.item
-                        ),
-                        content: SpaceNewsListItemView.init
-                    )
-                    .navigationBarTitleDisplayMode(.inline)
-                }
-                .background(
-                    NavigationLink(
-                        isActive: viewStore.binding(
-                            get: \.isNewsPageActive,
-                            send: SpaceNewsListAction.setNewsPageActive
-                        ),
-                        destination: {
-                            IfLetStore(
-                                store.scope(
-                                    state: \.newsPage,
-                                    action: SpaceNewsListAction.newsPage
-                                ),
-                                then: SpaceNewsPageView.init
-                            )
-                        },
-                        label: { EmptyView() }
-                    )
-                )
-            }else  {
-                ProgressView()
-                    .onAppear {
-                        viewStore.send(.onAppear)
+            ZStack {
+                if !viewStore.state.isLoaderActive {
+                    List {
+                        ForEachStore(
+                            store.scope(
+                                state: \.items,
+                                action: SpaceNewsListAction.item
+                            ),
+                            content: SpaceNewsListItemView.init
+                        )
+                        .navigationBarTitleDisplayMode(.inline)
                     }
+                    .background(
+                        NavigationLink(
+                            isActive: viewStore.binding(
+                                get: \.isNewsPageActive,
+                                send: SpaceNewsListAction.setNewsPageActive
+                            ),
+                            destination: {
+                                IfLetStore(
+                                    store.scope(
+                                        state: \.newsPage,
+                                        action: SpaceNewsListAction.newsPage
+                                    ),
+                                    then: SpaceNewsPageView.init
+                                )
+                            },
+                            label: { EmptyView() }
+                        )
+                    )
+                } else {
+                    ProgressView()
+                        .onAppear {
+                            viewStore.send(.onAppear)
+                        }
+                }
             }
-            
+            .alert(
+                store.scope(state: \.alert),
+                dismiss: .dismissAlert
+            )
         }
-        
     }
 }
 

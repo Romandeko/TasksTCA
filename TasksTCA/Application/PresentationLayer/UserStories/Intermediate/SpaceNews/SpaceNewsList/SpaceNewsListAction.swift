@@ -16,6 +16,15 @@ public enum SpaceNewsListAction: Equatable {
     /// On appear action
     case onAppear
     
+    /// Make obtain articles request
+    case obtainArticles
+    
+    /// Dismiss the alert
+    case dismissAlert
+    
+    /// Dismisses the view
+    case noButtonTapped
+    
     // MARK: - Children
     
     /// Actions of child module `SpaceNewsPageAction`
